@@ -1,0 +1,8 @@
+rootProject.name = 'dnd-parent'
+include 'dnd-domain'
+include 'dnd-war'
+include 'dnd-test'
+include 'dnd-impl'
+include 'dnd-ui'
+include 'test'
+
