@@ -1,4 +1,4 @@
-package sk.dnd.service;
+package application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,11 +7,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EntityScan("sk.dnd")
+@ComponentScan({"sk.dnd.controller", "sk.dnd.service"})
 @EnableJpaRepositories("sk.dnd")
-public class DndTestBase {
+@EntityScan("sk.dnd")
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DndTestBase.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }

@@ -7,5 +7,6 @@ package sk.dnd.domain.character.support;
  */
 public enum ClassificationType {
 	SKILL,
-	LANGUAGE,
+	TOOL,
+	LANGUAGE
 }

@@ -15,8 +15,13 @@ import sk.dnd.domain.infra.BaseObject;
 public class CharacterBackground extends BaseObject<Integer> {
 
 	private List<Classification> skills;
-	private List<Classification> languages;
+	private int languagesCount;
+	private List<PersonalCharacteristic> traits;
+	private List<PersonalCharacteristic> ideals;
+	private List<PersonalCharacteristic> bonds;
+	private List<PersonalCharacteristic> flaws;
 	private Map<String, CharacterBackgroundLocale> locales;
+	private Map<String, CharacterBackgroundSpeciality> specialities;
 
 	@Id
 	@Column(name = "DND_CHARACTER_BACKGROUND_ID", nullable = false, unique = true)
@@ -49,20 +54,16 @@ public class CharacterBackground extends BaseObject<Integer> {
 		this.skills = skills;
 	}
 
-	@ManyToMany
-	@JoinTable(name = "DND_CHARACTER_BACKGROUND_LANGUAGE",
-		joinColumns = @JoinColumn(name = "DND_CHARACTER_BACKGROUND_ID"),
-		inverseJoinColumns = @JoinColumn(name = "DND_CLASSIFICATION_ID")
-	)
-	public List<Classification> getLanguages() {
-		return languages;
-	}
-
-	public void setLanguages(List<Classification> languages) {
-		this.languages = languages;
-	}
-
 	@NotNull
+	@Column(name = "LANGUAGES_COUNT", nullable = false)
+	public int getLanguagesCount() {
+		return languagesCount;
+	}
+
+	public void setLanguagesCount(int languagesCount) {
+		this.languagesCount = languagesCount;
+	}
+
 	@OneToMany(mappedBy = "characterBackground", fetch = FetchType.LAZY)
 	@MapKey(name = "characterBackgroundLocalePk.langCode")
 	public Map<String, CharacterBackgroundLocale> getLocales() {
@@ -71,5 +72,67 @@ public class CharacterBackground extends BaseObject<Integer> {
 
 	public void setLocales(Map<String, CharacterBackgroundLocale> locales) {
 		this.locales = locales;
+	}
+
+	@OneToMany(mappedBy = "characterBackground", fetch = FetchType.LAZY)
+	@MapKey(name = "langCode")
+	public Map<String, CharacterBackgroundSpeciality> getSpecialities() {
+		return specialities;
+	}
+
+	public void setSpecialities(Map<String, CharacterBackgroundSpeciality> specialities) {
+		this.specialities = specialities;
+	}
+
+	@NotNull
+	@OneToMany
+	@JoinTable(name = "DND_CHARACTER_BACKGROUND_TRAIT",
+		joinColumns = @JoinColumn(name = "DND_CHARACTER_BACKGROUND_ID"),
+		inverseJoinColumns = @JoinColumn(name = "DND_PERSONAL_CHARACTERISTIC_ID"))
+	public List<PersonalCharacteristic> getTraits() {
+		return traits;
+	}
+
+	public void setTraits(List<PersonalCharacteristic> traits) {
+		this.traits = traits;
+	}
+
+	@NotNull
+	@OneToMany
+	@JoinTable(name = "DND_CHARACTER_BACKGROUND_IDEAL",
+		joinColumns = @JoinColumn(name = "DND_CHARACTER_BACKGROUND_ID"),
+		inverseJoinColumns = @JoinColumn(name = "DND_PERSONAL_CHARACTERISTIC_ID"))
+	public List<PersonalCharacteristic> getIdeals() {
+		return ideals;
+	}
+
+	public void setIdeals(List<PersonalCharacteristic> ideals) {
+		this.ideals = ideals;
+	}
+
+	@NotNull
+	@OneToMany
+	@JoinTable(name = "DND_CHARACTER_BACKGROUND_BOND",
+		joinColumns = @JoinColumn(name = "DND_CHARACTER_BACKGROUND_ID"),
+		inverseJoinColumns = @JoinColumn(name = "DND_PERSONAL_CHARACTERISTIC_ID"))
+	public List<PersonalCharacteristic> getBonds() {
+		return bonds;
+	}
+
+	public void setBonds(List<PersonalCharacteristic> bonds) {
+		this.bonds = bonds;
+	}
+
+	@NotNull
+	@OneToMany
+	@JoinTable(name = "DND_CHARACTER_BACKGROUND_FLAW",
+		joinColumns = @JoinColumn(name = "DND_CHARACTER_BACKGROUND_ID"),
+		inverseJoinColumns = @JoinColumn(name = "DND_PERSONAL_CHARACTERISTIC_ID"))
+	public List<PersonalCharacteristic> getFlaws() {
+		return flaws;
+	}
+
+	public void setFlaws(List<PersonalCharacteristic> flaws) {
+		this.flaws = flaws;
 	}
 }

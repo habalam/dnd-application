@@ -21,6 +21,8 @@ public class CharacterBackgroundLocale implements Serializable {
 
 	private String name;
 	private String description;
+	private String featureName;
+	private String featureDescription;
 
 	private CharacterBackground characterBackground;
 
@@ -31,6 +33,13 @@ public class CharacterBackgroundLocale implements Serializable {
 
 	public void setCharacterBackgroundLocalePk(CharacterBackgroundLocalePk characterBackgroundLocalePk) {
 		this.characterBackgroundLocalePk = characterBackgroundLocalePk;
+	}
+
+	public void setLangCode(String langCode) {
+		if(getCharacterBackgroundLocalePk() == null) {
+			setCharacterBackgroundLocalePk(new CharacterBackgroundLocalePk());
+		}
+		getCharacterBackgroundLocalePk().setLangCode(langCode);
 	}
 
 	@NotNull
@@ -73,5 +82,26 @@ public class CharacterBackgroundLocale implements Serializable {
 			setCharacterBackgroundLocalePk(new CharacterBackgroundLocalePk());
 		}
 		getCharacterBackgroundLocalePk().setCharacterBackgroundId(characterBackgroundId);
+	}
+
+	@NotNull
+	@Column(name = "FEATURE_NAME")
+	public String getFeatureName() {
+		return featureName;
+	}
+
+	public void setFeatureName(String featureName) {
+		this.featureName = featureName;
+	}
+
+	@NotNull
+	@Column(name = "FEATURE_DESCRIPTION")
+	@Lob
+	public String getFeatureDescription() {
+		return featureDescription;
+	}
+
+	public void setFeatureDescription(String featureDescription) {
+		this.featureDescription = featureDescription;
 	}
 }

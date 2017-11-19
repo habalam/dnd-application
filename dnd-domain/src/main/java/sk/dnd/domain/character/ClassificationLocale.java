@@ -40,6 +40,13 @@ public class ClassificationLocale implements Serializable {
 		this.classificationLocalePk = classificationLocalePk;
 	}
 
+	public void setLangCode(String langCode) {
+		if(getClassificationLocalePk() == null) {
+			setClassificationLocalePk(new ClassificationLocalePk());
+		}
+		getClassificationLocalePk().setLangCode(langCode);
+	}
+
 	@NotNull
 	@Length(max = DndConsts.CLASSIFICATION_NAME_LEN)
 	@Column(name = "NAME", length = DndConsts.CLASSIFICATION_NAME_LEN)

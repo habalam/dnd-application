@@ -1,8 +1,10 @@
 package sk.dnd.service;
 
+import sk.dnd.domain.character.Character;
+
 public interface CharacterService {
 
-	public String getMessage();
+	public Character findCharacter(String characterName);
 
-	public void setMessage(String message);
+	public Character createCharacter();
 }

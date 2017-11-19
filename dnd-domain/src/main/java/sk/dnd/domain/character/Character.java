@@ -34,6 +34,8 @@ public class Character extends BaseObject<Integer> {
 	private SubraceType characterSubrace;
 	private List<CharacterProfession> characterProfessions;
 	private CharacterBackground characterBackground;
+
+	//TODO not propertly implemented
 	private CharacterEquipment equipment;
 
 	private int strength;
@@ -46,9 +48,10 @@ public class Character extends BaseObject<Integer> {
 	private boolean inspired = false;
 	private String origin;
 
+	//TODO add height/weight/gender
 	//TODO add skills/tools
 	//TODO add bonds, flaws, ideals
-	//TODO add equiped equipment
+	//TODO add equiped equipment + whole items
 	//TODO add death saves
 	//TODO add feats
 	//TODO add languages - from profession/race/feat
@@ -238,7 +241,7 @@ public class Character extends BaseObject<Integer> {
 	}
 
 	@Lob
-	@Column(name = "BACKGROUND")
+	@Column(name = "ORIGIN")
 	public String getOrigin() {
 		return origin;
 	}
@@ -258,7 +261,7 @@ public class Character extends BaseObject<Integer> {
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "DND_CHARACTER_BACKGROUND", nullable = false)
+	@JoinColumn(name = "DND_CHARACTER_BACKGROUND_ID", nullable = false)
 	public CharacterBackground getCharacterBackground() {
 		return characterBackground;
 	}

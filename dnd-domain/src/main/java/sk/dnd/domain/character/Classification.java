@@ -44,7 +44,7 @@ public class Classification extends BaseObject<Integer> {
 	}
 
 	@Column(name = "TYPE", nullable = false)
-	@Enumerated()
+	@Enumerated(EnumType.STRING)
 	public ClassificationType getType() {
 		return type;
 	}
