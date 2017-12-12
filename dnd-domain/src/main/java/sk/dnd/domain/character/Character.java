@@ -10,14 +10,12 @@ import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import org.springframework.cache.annotation.Cacheable;
 import sk.dnd.domain.character.support.Allignment;
-import sk.dnd.domain.character.support.RaceType;
-import sk.dnd.domain.character.support.SubraceType;
 import sk.dnd.domain.infra.BaseObject;
 import sk.dnd.domain.util.DndConsts;
 
 /**
  * Entity for played character. Has class, levels, ... .
- * */
+ */
 @Entity
 @Table(name = "DND_CHARACTER")
 @Cacheable
@@ -28,16 +26,23 @@ public class Character extends BaseObject<Integer> {
 	private int hitPoints;
 	private int temporaryHitPoints;
 	private int experiencePoints;
+	private int hitPointsCurrent;
+	private int wounds;
 
+	private Gender gender;
+	private CharacterDimension characterDimension;
 	private Allignment allignment;
-	private RaceType characterRace;
-	private SubraceType characterSubrace;
+	private CharacterRace characterRace;
+	private CharacterSubrace characterSubrace;
 	private List<CharacterProfession> characterProfessions;
 	private CharacterBackground characterBackground;
+
+	private List<PersonalCharacteristic> personalCharacteristics;
 
 	//TODO not propertly implemented
 	private CharacterEquipment equipment;
 
+	//TODO maybe separate to new table
 	private int strength;
 	private int dexterity;
 	private int constitution;
@@ -48,13 +53,11 @@ public class Character extends BaseObject<Integer> {
 	private boolean inspired = false;
 	private String origin;
 
-	//TODO add height/weight/gender
 	//TODO add skills/tools
-	//TODO add bonds, flaws, ideals
+	//TODO add languages - from profession/race/feat
 	//TODO add equiped equipment + whole items
 	//TODO add death saves
 	//TODO add feats
-	//TODO add languages - from profession/race/feat
 
 	@Override
 	@NotNull
@@ -103,25 +106,6 @@ public class Character extends BaseObject<Integer> {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	@NotNull
-	@Column(name = "RACE", nullable = false)
-	public RaceType getCharacterRace() {
-		return characterRace;
-	}
-
-	public void setCharacterRace(RaceType characterRace) {
-		this.characterRace = characterRace;
-	}
-
-	@Column(name = "SUBRACE")
-	public SubraceType getCharacterSubrace() {
-		return characterSubrace;
-	}
-
-	public void setCharacterSubrace(SubraceType characterSubrace) {
-		this.characterSubrace = characterSubrace;
 	}
 
 	@NotNull
@@ -205,6 +189,17 @@ public class Character extends BaseObject<Integer> {
 	}
 
 	@NotNull
+	@Column(name = "GENDER", nullable = false)
+	@Enumerated(EnumType.STRING)
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	@NotNull
 	@Column(name = "ALLIGNMENT", nullable = false)
 	public Allignment getAllignment() {
 		return allignment;
@@ -212,11 +207,6 @@ public class Character extends BaseObject<Integer> {
 
 	public void setAllignment(Allignment allignment) {
 		this.allignment = allignment;
-	}
-
-	public String toString() {
-		//TODO finish
-		return null;
 	}
 
 	@NotNull
@@ -268,5 +258,70 @@ public class Character extends BaseObject<Integer> {
 
 	public void setCharacterBackground(CharacterBackground characterBackground) {
 		this.characterBackground = characterBackground;
+	}
+
+	@OneToOne(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true)
+	public CharacterDimension getCharacterDimension() {
+		return characterDimension;
+	}
+
+	public void setCharacterDimension(CharacterDimension characterDimension) {
+		this.characterDimension = characterDimension;
+	}
+
+	@ManyToMany
+	@JoinTable(name = "DND_CHARACTER_PERTONALITY_CHARACTERISTIC",
+		joinColumns = @JoinColumn(name = "DND_CHARACTER_ID"),
+		inverseJoinColumns = @JoinColumn(name = "DND_PERSONAL_CHARACTERISTIC_ID")
+	)
+	public List<PersonalCharacteristic> getPersonalCharacteristics() {
+		return personalCharacteristics;
+	}
+
+	public void setPersonalCharacteristics(List<PersonalCharacteristic> personalCharacteristics) {
+		this.personalCharacteristics = personalCharacteristics;
+	}
+
+	@NotNull
+	@Column(name = "WOUNDS", nullable = false)
+	public int getWounds() {
+		return wounds;
+	}
+
+	public void setWounds(int wounds) {
+		this.wounds = wounds;
+	}
+
+	@NotNull
+	@Column(name = "HIT_POINTS_CURRENT", nullable = false)
+	public int getHitPointsCurrent() {
+		return hitPointsCurrent;
+	}
+
+	public void setHitPointsCurrent(int hitPointsCurrent) {
+		this.hitPointsCurrent = hitPointsCurrent;
+	}
+
+	@OneToOne(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true)
+	public CharacterRace getCharacterRace() {
+		return characterRace;
+	}
+
+	public void setCharacterRace(CharacterRace characterRace) {
+		this.characterRace = characterRace;
+	}
+
+	@OneToOne(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true)
+	public CharacterSubrace getCharacterSubrace() {
+		return characterSubrace;
+	}
+
+	public void setCharacterSubrace(CharacterSubrace characterSubrace) {
+		this.characterSubrace = characterSubrace;
+	}
+
+	public String toString() {
+		//TODO finish
+		return null;
 	}
 }

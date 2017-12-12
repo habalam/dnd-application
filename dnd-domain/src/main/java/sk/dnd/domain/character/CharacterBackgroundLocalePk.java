@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
+import com.google.common.base.Objects;
+import com.google.common.collect.ComparisonChain;
 import sk.dnd.domain.util.DndConsts;
 
 @Embeddable
@@ -35,7 +37,23 @@ public class CharacterBackgroundLocalePk implements Comparable<CharacterBackgrou
 	}
 
 	@Override
-	public int compareTo(CharacterBackgroundLocalePk o) {
-		return 0;
+	public int compareTo(CharacterBackgroundLocalePk other) {
+		return ComparisonChain.start()
+			.compare(characterBackgroundId, other.getCharacterBackgroundId())
+			.compare(langCode, other.getLangCode())
+			.result();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(characterBackgroundId, langCode);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return this == obj
+			|| obj instanceof CharacterBackgroundLocalePk
+			&& Objects.equal(characterBackgroundId, ((CharacterBackgroundLocalePk) obj).getCharacterBackgroundId())
+			&& Objects.equal(langCode, ((CharacterBackgroundLocalePk) obj).getLangCode());
 	}
 }

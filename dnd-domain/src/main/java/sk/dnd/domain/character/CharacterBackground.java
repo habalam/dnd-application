@@ -23,6 +23,8 @@ public class CharacterBackground extends BaseObject<Integer> {
 	private Map<String, CharacterBackgroundLocale> locales;
 	private Map<String, CharacterBackgroundSpeciality> specialities;
 
+	//TODO add equipment
+
 	@Id
 	@Column(name = "DND_CHARACTER_BACKGROUND_ID", nullable = false, unique = true)
 	@GeneratedValue(generator = "DND_CHARACTER_BACKGROUND_GEN")

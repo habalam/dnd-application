@@ -1,29 +1,49 @@
 package sk.dnd.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import sk.dnd.domain.character.Character;
-import sk.dnd.domain.character.CharacterBackground;
-import sk.dnd.domain.character.CharacterBackgroundRepository;
+import sk.dnd.domain.character.Gender;
 import sk.dnd.domain.character.support.Allignment;
-import sk.dnd.domain.character.support.RaceType;
-import sk.dnd.domain.character.support.SubraceType;
-import sk.dnd.service.CharacterService;
+import sk.dnd.service.character.CharacterCreateForm;
+import sk.dnd.service.character.CharacterService;
 
-@RestController
+//TODO create separate controller for Character creation
+@Controller
 public class CharacterSearchController {
 
 	@Autowired
 	private CharacterService characterService;
 
-	@GetMapping("/character")
-	public Character showCharacter(String characterName) {
-		return characterService.findCharacter(characterName);
+	@RequestMapping("/character")
+	public String showCharacter(String characterName, Model model) {
+		Character character = characterService.findCharacter(characterName);
+		model.addAttribute("character", character);
+		return "greeting";
 	}
 
-	@GetMapping("/createCharacter")
-	public Character createCharacter() {
-		return characterService.createCharacter();
+	@RequestMapping("/createCharacter")
+	public String createCharacter(@ModelAttribute CharacterCreateForm characterCreateForm, Model model) {
+		Character character = characterService.createCharacter(characterCreateForm);
+		model.addAttribute("character", character);
+		return "greeting";
+	}
+
+	@RequestMapping("/creating")
+	public String characterCreation(Model model) {
+		model.addAttribute("characterCreateForm", new CharacterCreateForm());
+		model.addAttribute("genders", Gender.values());
+		model.addAttribute("allignments", Allignment.values());
+		return "create";
+	}
+
+	@RequestMapping("/greeting")
+	public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
+		model.addAttribute("name", name);
+		return "greeting";
 	}
 }

@@ -1,7 +1,8 @@
 package sk.dnd.service;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert;
@@ -14,17 +15,15 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import sk.dnd.domain.character.Character;
-import sk.dnd.domain.character.CharacterBackground;
-import sk.dnd.domain.character.CharacterBackgroundLocale;
-import sk.dnd.domain.character.CharacterBackgroundRepository;
-import sk.dnd.domain.character.CharacterRepository;
-import sk.dnd.domain.character.Classification;
-import sk.dnd.domain.character.ClassificationLocale;
-import sk.dnd.domain.character.ClassificationRepository;
+import sk.dnd.domain.character.*;
+import sk.dnd.domain.character.race.AbilityModifier;
+import sk.dnd.domain.character.race.AbilityModifierRepository;
+import sk.dnd.domain.character.race.Race;
+import sk.dnd.domain.character.race.RaceRepository;
+import sk.dnd.domain.character.race.Subrace;
+import sk.dnd.domain.character.race.SubraceRepository;
 import sk.dnd.domain.character.support.Allignment;
 import sk.dnd.domain.character.support.ClassificationType;
-import sk.dnd.domain.character.support.RaceType;
-import sk.dnd.domain.character.support.SubraceType;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -33,6 +32,15 @@ public class CharacterServiceTest {
 
 	@Autowired
 	private CharacterRepository characterRepository;
+
+	@Autowired
+	private AbilityModifierRepository abilityModifierRepository;
+
+	@Autowired
+	private RaceRepository raceRepository;
+
+	@Autowired
+	private SubraceRepository subraceRepository;
 
 	@Autowired
 	private CharacterBackgroundRepository characterBackgroundRepository;
@@ -65,8 +73,8 @@ public class CharacterServiceTest {
 		character.setName("Grondal");
 		character.setLevel(20);
 		character.setHitPoints(200);
-		character.setCharacterRace(RaceType.DWARF);
-		character.setCharacterSubrace(SubraceType.DWARF_HILL);
+		character.setHitPointsCurrent(199);
+		character.setWounds(1);
 		character.setStrength(20);
 		character.setDexterity(20);
 		character.setConstitution(20);
@@ -74,6 +82,7 @@ public class CharacterServiceTest {
 		character.setIntelligence(20);
 		character.setCharisma(20);
 		character.setExperiencePoints(0);
+		character.setGender(Gender.MALE);
 		character.setAllignment(Allignment.GOOD_LAWFUL);
 		character.setOrigin("Test origin");
 		character.setInspired(true);
@@ -120,6 +129,36 @@ public class CharacterServiceTest {
 	@Test
 	public void testCharacterRepositoryStoreCharacter() {
 		characterRepository.save(character);
+
+		Race dwarf = raceRepository.findById(1);
+		CharacterRace characterRace = new CharacterRace();
+		characterRace.setCharacter(character);
+		characterRace.setRace(dwarf);
+		List<AbilityModifier> characterRaceAbilityModifiers = new ArrayList<>();
+		for(AbilityModifier abilityModifier: dwarf.getRaceAbilityModifiers()) {
+			AbilityModifier characterRaceAbilityModifier = new AbilityModifier();
+			characterRaceAbilityModifier.setAbilityType(abilityModifier.getAbilityType());
+			characterRaceAbilityModifier.setValue(abilityModifier.getValue());
+			abilityModifierRepository.save(characterRaceAbilityModifier);
+			characterRaceAbilityModifiers.add(characterRaceAbilityModifier);
+		}
+		characterRace.setAbilityModifiers(characterRaceAbilityModifiers);
+		character.setCharacterRace(characterRace);
+
+		Subrace hillDwarf = subraceRepository.findById(1);
+		CharacterSubrace characterSubrace = new CharacterSubrace();
+		characterSubrace.setCharacter(character);
+		characterSubrace.setSubrace(hillDwarf);
+		character.setCharacterSubrace(characterSubrace);
+
+		CharacterDimension characterDimension = new CharacterDimension();
+		characterDimension.setCharacter(character);
+		characterDimension.setFeets(6);
+		characterDimension.setInches(0);
+		characterDimension.setPounds(170);
+		character.setCharacterDimension(characterDimension);
+		characterRepository.save(character);
+
 		Character character = characterRepository.findByName("Grondal");
 		Assert.assertNotNull(character);
 	}

@@ -266,8 +266,64 @@ insert into DND_CHARACTER_BACKGROUND_SPECIALITY_VALUE (dnd_character_background_
 insert into DND_CHARACTER_BACKGROUND_SPECIALITY_VALUE (dnd_character_background_speciality_id, value) values (1, 'Pickpocket');
 insert into DND_CHARACTER_BACKGROUND_SPECIALITY_VALUE (dnd_character_background_speciality_id, value) values (1, 'Smuggler');
 
+-- Ability modifiers
+insert into DND_ABILITY_MODIFIER (dnd_ability_modifier_id, ability_type, value) values (1, 'CONSTITUTION', 2);
+insert into DND_ABILITY_MODIFIER (dnd_ability_modifier_id, ability_type, value) values (2, 'WISDOM', 1);
+insert into DND_ABILITY_MODIFIER (dnd_ability_modifier_id, ability_type, value) values (3, 'STRENGTH', 2);
+
+-- Abilities
+insert into DND_ABILITY (dnd_ability_id) values (1);
+insert into DND_ABILITY (dnd_ability_id) values (2);
+insert into DND_ABILITY (dnd_ability_id) values (3);
+insert into DND_ABILITY (dnd_ability_id) values (4);
+insert into DND_ABILITY (dnd_ability_id) values (5);
+insert into DND_ABILITY (dnd_ability_id) values (6);
+
+insert into DND_ABILITY_L (dnd_ability_id, lang_code, name, description) values (1, 'en', 'Dwarven Resilience',
+'You have advantage on saving throws against poison, and you have resistance against poison damage.');
+insert into DND_ABILITY_L (dnd_ability_id, lang_code, name, description) values (2, 'en', 'Dwarven Combat Training',
+'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.');
+insert into DND_ABILITY_L (dnd_ability_id, lang_code, name, description) values (3, 'en', 'Tool Proficiency',
+'You gain proficiency with the artisan’s tools of your choice: smith’s tools, brewer’s supplies, or mason’s tools.');
+insert into DND_ABILITY_L (dnd_ability_id, lang_code, name, description) values (4, 'en', 'Stonecunning',
+'Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus.');
+insert into DND_ABILITY_L (dnd_ability_id, lang_code, name, description) values (5, 'en', 'Dwarven Toughness',
+'Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.');
+insert into DND_ABILITY_L (dnd_ability_id, lang_code, name, description) values (6, 'en', 'Dwarven Armor Training',
+'You have proficiency with light and medium armor.');
+
+
+-- Races
+insert into DND_RACE (dnd_race_id, size, speed, darkvision) values (1, 'MEDIUM', 25, 'Y');
+
+insert into DND_RACE_L (dnd_race_id, lang_code, name, age, alignment, size, description) values (1, 'en', 'Dwarf', 'Dwarves mature at the same rate as humans, but they’re considered young until they reach the age of 50. On average, they live about 350 years.',
+'Most dwarves are lawful, believing firmly in the benefits of a well-ordered society. They tend toward good as well, with a strong sense of fair play and a belief that everyone deserves to share in the benefits of a just order.',
+' Dwarves stand between 4 and 5 feet tall and average about 150 pounds.',
+'Test description');
+
+insert into DND_RACE_ABILITY_MODIFIER (dnd_race_id, dnd_ability_modifier_id) values (1, 1);
+
+insert into DND_RACE_ABILITY (dnd_race_id, dnd_ability_id) values (1, 1);
+insert into DND_RACE_ABILITY (dnd_race_id, dnd_ability_id) values (1, 2);
+insert into DND_RACE_ABILITY (dnd_race_id, dnd_ability_id) values (1, 3);
+insert into DND_RACE_ABILITY (dnd_race_id, dnd_ability_id) values (1, 4);
+
+-- Subraces
+insert into DND_SUBRACE (dnd_subrace_id, dnd_race_id) values (1, 1);
+insert into DND_SUBRACE (dnd_subrace_id, dnd_race_id) values (2, 1);
+
+insert into DND_SUBRACE_L (dnd_subrace_id, lang_code, name, description) values (1, 'en', 'Hill Dwarf',
+'As a hill dwarf, you have keen senses, deep intuition, and remarkable resilience. The gold dwarves of Faerûn in their mighty southern kingdom are hill dwarves, as are the exiled Neidar and the debased Klar of Krynn in the Dragonlance setting.');
+insert into DND_SUBRACE_L (dnd_subrace_id, lang_code, name, description) values (2, 'en', 'Mountain Dwarf',
+'As a mountain dwarf, you’re strong and hardy, accustomed to a difficult life in rugged terrain. You’re probably on the tall side (for a dwarf), and tend toward lighter coloration. The shield dwarves of northern Faerûn, as well as the ruling Hylar clan and the noble Daewar clan of Dragonlance, are mountain dwarves.');
+
+insert into DND_SUBRACE_ABILITY_MODIFIER (dnd_subrace_id, dnd_ability_modifier_id) values (1, 2);
+
+insert into DND_SUBRACE_ABILITY (dnd_subrace_id, dnd_ability_id) values (1, 5);
+
 -- Sequencers
 insert into sys_sequence (seq_name, seq_count) values ('DND_CLASSIFICATION_ID', 1000000);
 insert into sys_sequence (seq_name, seq_count) values ('DND_CHARACTER_BACKGROUND_ID', 1000000);
 insert into sys_sequence (seq_name, seq_count) values ('DND_PERSONAL_CHARACTERISTIC_ID', 1000000);
 insert into sys_sequence (seq_name, seq_count) values ('DND_CHARACTER_BACKGROUND_SPECIALITY_ID', 1000000);
+insert into sys_sequence (seq_name, seq_count) values ('DND_ABILITY_MODIFIER_ID', 1000000);

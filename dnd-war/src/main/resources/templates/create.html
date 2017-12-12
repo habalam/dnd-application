@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
+
+<link rel="stylesheet" th:href="@{/css/default.css}"/>
+
+<head>
+	<title>Getting Started: Serving Web Content</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Form</h1>
+<form action="#" th:action="@{/createCharacter}" th:object="${characterCreateForm}" method="post">
+	<p>Name: <input type="text" th:field="*{name}"/></p>
+	<p>Level: <input type="number" th:field="*{level}"/></p>
+	<p>Hit points: <input type="number" th:field="*{hitPoints}"/></p>
+	<p>Temporary hit points: <input type="number" th:field="*{temporaryHitPoints}"/></p>
+	<p>Wounds: <input type="number" th:field="*{wounds}"/></p>
+	<p>Gender:
+		<select th:field="*{gender}">
+			<option th:each="gender: ${genders}" th:value="${gender}" th:text="${gender}"></option>
+		</select>
+	</p>
+	<p>Allignment:
+		<select th:field="*{allignment}">
+			<option th:each="allignment: ${allignments}" th:value="${allignment}" th:text="${allignment}"></option>
+		</select>
+	</p>
+	<p>Strength: <input type="number" th:field="*{strength}"/></p>
+	<p>Dexterity: <input type="number" th:field="*{dexterity}"/></p>
+	<p>Constitution: <input type="number" th:field="*{constitution}"/></p>
+	<p>Wisdom: <input type="number" th:field="*{wisdom}"/></p>
+	<p>Intelligence: <input type="number" th:field="*{intelligence}"/></p>
+	<p>Charisma: <input type="number" th:field="*{charisma}"/></p>
+	<p>Inspiration: <input type="checkbox" th:field="*{inspired}"/></p>
+	<p>Origin: <input type="text" th:field="*{origin}"/></p>
+	<p><input type="submit" value="Submit"/><input type="reset" value="Reset"/></p>
+</form>
+</body>
+</html>

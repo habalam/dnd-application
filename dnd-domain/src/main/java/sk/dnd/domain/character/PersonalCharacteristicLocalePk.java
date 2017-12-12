@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 
 @Embeddable
@@ -36,6 +37,22 @@ public class PersonalCharacteristicLocalePk implements Serializable, Comparable<
 
 	@Override
 	public int compareTo(PersonalCharacteristicLocalePk other) {
-		return ComparisonChain.start().compare(personalCharactericId, other.getPersonalCharactericId()).compare(langCode, other.getLangCode()).result();
+		return ComparisonChain.start()
+			.compare(personalCharactericId, other.getPersonalCharactericId())
+			.compare(langCode, other.getLangCode())
+			.result();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(personalCharactericId, langCode);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return this == obj
+			|| obj instanceof PersonalCharacteristicLocalePk
+			&& Objects.equal(personalCharactericId, ((PersonalCharacteristicLocalePk) obj).getPersonalCharactericId())
+			&& Objects.equal(langCode, ((PersonalCharacteristicLocalePk) obj).getLangCode());
 	}
 }
