@@ -34,6 +34,18 @@ insert into dnd_classification (dnd_classification_id, type) values(31, 'LANGUAG
 insert into dnd_classification (dnd_classification_id, type) values(32, 'LANGUAGE');
 insert into dnd_classification (dnd_classification_id, type) values(33, 'LANGUAGE');
 insert into dnd_classification (dnd_classification_id, type) values(34, 'LANGUAGE');
+insert into dnd_classification (dnd_classification_id, type) values(35, 'LANGUAGE');
+insert into dnd_classification (dnd_classification_id, type) values(36, 'DMG_TYPE');
+insert into dnd_classification (dnd_classification_id, type) values(37, 'RESISTENCE');
+insert into dnd_classification (dnd_classification_id, type) values(38, 'WEAPON_TYPE');
+insert into dnd_classification (dnd_classification_id, type) values(39, 'WEAPON_TYPE');
+insert into dnd_classification (dnd_classification_id, type) values(40, 'WEAPON_TYPE');
+insert into dnd_classification (dnd_classification_id, type) values(41, 'WEAPON_TYPE');
+insert into dnd_classification (dnd_classification_id, type) values(42, 'TOOL');
+insert into dnd_classification (dnd_classification_id, type) values(43, 'TOOL');
+insert into dnd_classification (dnd_classification_id, type) values(44, 'TOOL');
+insert into dnd_classification (dnd_classification_id, type) values(45, 'ARMOR_TYPE');
+insert into dnd_classification (dnd_classification_id, type) values(46, 'ARMOR_TYPE');
 
 insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (1, 'en', 'Athletics', 'Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming. Examples include the following activities: • You attempt to climb a sheer or slippery cliff, avoid hazards while scaling a wall, or cling to a surface while something is trying to knock you off. • You try to jump an unusually long distance or pull off a stunt midjump. • You struggle to swim or stay afloat in treacherous currents, storm-tossed waves, or areas of thick seaweed. Or another creature tries to push or pull you underwater or otherwise interfere with your swimming.');
 insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (2, 'en', 'Acrobatics', 'Your Dexterity (Acrobatics) check covers your attempt to stay on your feet in a tricky situation, such as when you’re trying to run across a sheet of ice, balance on a tightrope, or stay upright on a rocking ship’s deck. The DM might also call for a Dexterity (Acrobatics) check to see if you can perform acrobatic stunts, including dives, rolls, somersaults, and flips.');
@@ -69,6 +81,18 @@ insert into dnd_classification_l (dnd_classification_id, lang_code, name, descri
 insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (32, 'en', 'Primordial', null);
 insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (33, 'en', 'Sylvan', null);
 insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (34, 'en', 'Undercommon', null);
+insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (35, 'en', 'ANY', null);
+insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (36, 'en', 'Poison', null);
+insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (37, 'en', 'Poison', null);
+insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (38, 'en', 'Battleaxe', null);
+insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (39, 'en', 'Handaxe', null);
+insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (40, 'en', 'Throwing hammer', null);
+insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (41, 'en', 'Warhammer', null);
+insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (42, 'en', 'Smith''s tools', null);
+insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (43, 'en', 'Brewer''s supplies', null);
+insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (44, 'en', 'Mason'' tools', null);
+insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (45, 'en', 'Light armor', null);
+insert into dnd_classification_l (dnd_classification_id, lang_code, name, description) values (46, 'en', 'Medium armor', null);
 
 -- Personal Characteristics
 insert into DND_PERSONAL_CHARACTERISTIC (dnd_personal_characteristic_id, type) values (1, 'PERSONALITY_TRAIT');
@@ -272,26 +296,53 @@ insert into DND_ABILITY_MODIFIER (dnd_ability_modifier_id, ability_type, value) 
 insert into DND_ABILITY_MODIFIER (dnd_ability_modifier_id, ability_type, value) values (3, 'STRENGTH', 2);
 
 -- Abilities
-insert into DND_ABILITY (dnd_ability_id) values (1);
-insert into DND_ABILITY (dnd_ability_id) values (2);
-insert into DND_ABILITY (dnd_ability_id) values (3);
-insert into DND_ABILITY (dnd_ability_id) values (4);
-insert into DND_ABILITY (dnd_ability_id) values (5);
-insert into DND_ABILITY (dnd_ability_id) values (6);
+insert into DND_FEATURE (dnd_feature_id) values (1);
+insert into DND_FEATURE (dnd_feature_id) values (2);
+insert into DND_FEATURE (dnd_feature_id) values (3);
+insert into DND_FEATURE (dnd_feature_id) values (4);
+insert into DND_FEATURE (dnd_feature_id) values (5);
+insert into DND_FEATURE (dnd_feature_id) values (6);
 
-insert into DND_ABILITY_L (dnd_ability_id, lang_code, name, description) values (1, 'en', 'Dwarven Resilience',
+insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (1, 'en', 'Dwarven Resilience',
 'You have advantage on saving throws against poison, and you have resistance against poison damage.');
-insert into DND_ABILITY_L (dnd_ability_id, lang_code, name, description) values (2, 'en', 'Dwarven Combat Training',
+insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (2, 'en', 'Dwarven Combat Training',
 'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.');
-insert into DND_ABILITY_L (dnd_ability_id, lang_code, name, description) values (3, 'en', 'Tool Proficiency',
+insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (3, 'en', 'Tool Proficiency',
 'You gain proficiency with the artisan’s tools of your choice: smith’s tools, brewer’s supplies, or mason’s tools.');
-insert into DND_ABILITY_L (dnd_ability_id, lang_code, name, description) values (4, 'en', 'Stonecunning',
+insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (4, 'en', 'Stonecunning',
 'Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus.');
-insert into DND_ABILITY_L (dnd_ability_id, lang_code, name, description) values (5, 'en', 'Dwarven Toughness',
+insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (5, 'en', 'Dwarven Toughness',
 'Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.');
-insert into DND_ABILITY_L (dnd_ability_id, lang_code, name, description) values (6, 'en', 'Dwarven Armor Training',
+insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (6, 'en', 'Dwarven Armor Training',
 'You have proficiency with light and medium armor.');
 
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(1, 1, 'ADVANTAGE_SAVING_THROW', 0, null);
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(2, 1, 'RESISTANCE', 0, null);
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(3, 2, 'PROFICIENCY_WEAPON', 0, null);
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(4, 3, 'PROFICIENCY_TOOL', 1, null);
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(5, 4, 'PROFICIENCY_DOUBLED', 0, null);
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(6, 5, 'HIT_POINTS_PER_LEVEL', 0, 1);
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(7, 6, 'PROFICIENCY_ARMOR', 0, null);
+
+insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (1, 36);
+insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (2, 37);
+insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (3, 38);
+insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (3, 39);
+insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (3, 40);
+insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (3, 41);
+insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (4, 42);
+insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (4, 43);
+insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (4, 44);
+insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (5, 6);
+insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (7, 45);
+insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (7, 46);
 
 -- Races
 insert into DND_RACE (dnd_race_id, size, speed, darkvision) values (1, 'MEDIUM', 25, 'Y');
@@ -302,11 +353,12 @@ insert into DND_RACE_L (dnd_race_id, lang_code, name, age, alignment, size, desc
 'Test description');
 
 insert into DND_RACE_ABILITY_MODIFIER (dnd_race_id, dnd_ability_modifier_id) values (1, 1);
+insert into DND_RACE_LANGUAGE (dnd_race_id, dnd_classification_id) values (1, 20);
 
-insert into DND_RACE_ABILITY (dnd_race_id, dnd_ability_id) values (1, 1);
-insert into DND_RACE_ABILITY (dnd_race_id, dnd_ability_id) values (1, 2);
-insert into DND_RACE_ABILITY (dnd_race_id, dnd_ability_id) values (1, 3);
-insert into DND_RACE_ABILITY (dnd_race_id, dnd_ability_id) values (1, 4);
+insert into DND_RACE_FEATURE (dnd_race_id, dnd_feature_id) values (1, 1);
+insert into DND_RACE_FEATURE (dnd_race_id, dnd_feature_id) values (1, 2);
+insert into DND_RACE_FEATURE (dnd_race_id, dnd_feature_id) values (1, 3);
+insert into DND_RACE_FEATURE (dnd_race_id, dnd_feature_id) values (1, 4);
 
 -- Subraces
 insert into DND_SUBRACE (dnd_subrace_id, dnd_race_id) values (1, 1);
@@ -318,8 +370,10 @@ insert into DND_SUBRACE_L (dnd_subrace_id, lang_code, name, description) values 
 'As a mountain dwarf, you’re strong and hardy, accustomed to a difficult life in rugged terrain. You’re probably on the tall side (for a dwarf), and tend toward lighter coloration. The shield dwarves of northern Faerûn, as well as the ruling Hylar clan and the noble Daewar clan of Dragonlance, are mountain dwarves.');
 
 insert into DND_SUBRACE_ABILITY_MODIFIER (dnd_subrace_id, dnd_ability_modifier_id) values (1, 2);
+insert into DND_SUBRACE_ABILITY_MODIFIER (dnd_subrace_id, dnd_ability_modifier_id) values (2, 3);
 
-insert into DND_SUBRACE_ABILITY (dnd_subrace_id, dnd_ability_id) values (1, 5);
+insert into DND_SUBRACE_FEATURE (dnd_subrace_id, dnd_feature_id) values (1, 5);
+insert into DND_SUBRACE_FEATURE (dnd_subrace_id, dnd_feature_id) values (2, 6);
 
 -- Sequencers
 insert into sys_sequence (seq_name, seq_count) values ('DND_CLASSIFICATION_ID', 1000000);

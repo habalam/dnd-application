@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
+import sk.dnd.domain.character.Classification;
 import sk.dnd.domain.character.support.SizeType;
 import sk.dnd.domain.infra.BaseObject;
 
@@ -17,13 +18,13 @@ import sk.dnd.domain.infra.BaseObject;
 public class Race extends BaseObject<Integer> {
 
 	private List<AbilityModifier> raceAbilityModifiers;
-	private List<Ability> raceAbilities;
+	private List<Feature> raceFeatures;
 	private Map<String, RaceLocale> locales;
 	private SizeType size;
 	private int speed;
 	private boolean darkvision;
 	private List<Subrace> subraces;
-	//TODO add languages
+	private List<Classification> languages;
 	//TODO prejst vsetky rasy a implentovat pripadne specialitky
 
 	@Override
@@ -102,16 +103,16 @@ public class Race extends BaseObject<Integer> {
 
 	@NotNull
 	@OneToMany
-	@JoinTable(name = "DND_RACE_ABILITY",
+	@JoinTable(name = "DND_RACE_FEATURE",
 		joinColumns = @JoinColumn(name = "DND_RACE_ID"),
-		inverseJoinColumns = @JoinColumn(name = "DND_ABILITY_ID")
+		inverseJoinColumns = @JoinColumn(name = "DND_FEATURE_ID")
 	)
-	public List<Ability> getRaceAbilities() {
-		return raceAbilities;
+	public List<Feature> getRaceFeatures() {
+		return raceFeatures;
 	}
 
-	public void setRaceAbilities(List<Ability> raceAbilities) {
-		this.raceAbilities = raceAbilities;
+	public void setRaceFeatures(List<Feature> raceFeatures) {
+		this.raceFeatures = raceFeatures;
 	}
 
 	@OneToMany(mappedBy = "race", fetch = FetchType.LAZY)
@@ -121,5 +122,18 @@ public class Race extends BaseObject<Integer> {
 
 	public void setSubraces(List<Subrace> subraces) {
 		this.subraces = subraces;
+	}
+
+	@ManyToMany
+	@JoinTable(name = "DND_RACE_LANGUAGE",
+		joinColumns = @JoinColumn(name = "DND_RACE_ID"),
+		inverseJoinColumns = @JoinColumn(name = "DND_CLASSIFICATION_ID")
+	)
+	public List<Classification> getLanguages() {
+		return languages;
+	}
+
+	public void setLanguages(List<Classification> languages) {
+		this.languages = languages;
 	}
 }

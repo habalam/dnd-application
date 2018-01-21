@@ -10,19 +10,19 @@ import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
 
 @Embeddable
-public class AbilityLocalePk implements Serializable, Comparable<AbilityLocalePk> {
+public class FeatureLocalePk implements Serializable, Comparable<FeatureLocalePk> {
 
-	private Integer abilityId;
+	private Integer featureId;
 	private String langCode;
 
 	@NotNull
-	@Column(name = "DND_ABILITY_ID", nullable = false)
-	public Integer getAbilityId() {
-		return abilityId;
+	@Column(name = "DND_FEATURE_ID", nullable = false)
+	public Integer getFeatureId() {
+		return featureId;
 	}
 
-	public void setAbilityId(Integer abilityId) {
-		this.abilityId = abilityId;
+	public void setFeatureId(Integer featureId) {
+		this.featureId = featureId;
 	}
 
 	@NotNull
@@ -36,22 +36,22 @@ public class AbilityLocalePk implements Serializable, Comparable<AbilityLocalePk
 	}
 
 	@Override
-	public int compareTo(AbilityLocalePk other) {
+	public int compareTo(FeatureLocalePk other) {
 		return ComparisonChain.start()
-			.compare(abilityId, other.getAbilityId())
+			.compare(featureId, other.getFeatureId())
 			.compare(langCode, other.getLangCode())
 			.result();
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(abilityId, langCode);
+		return Objects.hashCode(featureId, langCode);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		return this == obj || obj instanceof AbilityLocalePk
-			&& Objects.equal(abilityId, ((AbilityLocalePk) obj).getAbilityId())
-			&& Objects.equal(langCode, ((AbilityLocalePk) obj).getLangCode());
+		return this == obj || obj instanceof FeatureLocalePk
+			&& Objects.equal(featureId, ((FeatureLocalePk) obj).getFeatureId())
+			&& Objects.equal(langCode, ((FeatureLocalePk) obj).getLangCode());
 	}
 }

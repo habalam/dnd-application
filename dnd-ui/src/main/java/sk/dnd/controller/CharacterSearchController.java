@@ -23,7 +23,8 @@ public class CharacterSearchController {
 	public String showCharacter(String characterName, Model model) {
 		Character character = characterService.findCharacter(characterName);
 		model.addAttribute("character", character);
-		return "greeting";
+		model.addAttribute("test", "auto");
+		return "show";
 	}
 
 	@RequestMapping("/createCharacter")
@@ -38,6 +39,8 @@ public class CharacterSearchController {
 		model.addAttribute("characterCreateForm", new CharacterCreateForm());
 		model.addAttribute("genders", Gender.values());
 		model.addAttribute("allignments", Allignment.values());
+		model.addAttribute("races", characterService.listRaces());
+		model.addAttribute("subraces", characterService.listSubraces());
 		return "create";
 	}
 

@@ -1,6 +1,8 @@
 package sk.dnd.service.character;
 
 import sk.dnd.domain.character.Gender;
+import sk.dnd.domain.character.race.Race;
+import sk.dnd.domain.character.race.Subrace;
 import sk.dnd.domain.character.support.Allignment;
 
 public class CharacterCreateForm {
@@ -12,6 +14,8 @@ public class CharacterCreateForm {
 	private Integer hitPointsCurrent;
 	private Integer wounds;
 
+	private Race race;
+	private Subrace subrace;
 	private Gender gender;
 	private Allignment allignment;
 
@@ -151,5 +155,21 @@ public class CharacterCreateForm {
 
 	public void setOrigin(String origin) {
 		this.origin = origin;
+	}
+
+	public Race getRace() {
+		return race;
+	}
+
+	public void setRace(Race race) {
+		this.race = race;
+	}
+
+	public Subrace getSubrace() {
+		return subrace;
+	}
+
+	public void setSubrace(Subrace subrace) {
+		this.subrace = subrace;
 	}
 }

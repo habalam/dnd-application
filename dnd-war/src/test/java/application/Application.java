@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({"sk.dnd.controller", "sk.dnd.service"})
+@ComponentScan({"sk.dnd.controller", "sk.dnd.service", "sk.dnd.domain.character.race"})
 @EnableJpaRepositories("sk.dnd")
 @EntityScan("sk.dnd")
 public class Application {

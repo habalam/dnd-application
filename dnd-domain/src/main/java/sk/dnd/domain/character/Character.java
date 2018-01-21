@@ -54,7 +54,6 @@ public class Character extends BaseObject<Integer> {
 	private String origin;
 
 	//TODO add skills/tools
-	//TODO add languages - from profession/race/feat
 	//TODO add equiped equipment + whole items
 	//TODO add death saves
 	//TODO add feats

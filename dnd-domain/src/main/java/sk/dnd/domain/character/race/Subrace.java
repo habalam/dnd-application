@@ -15,7 +15,7 @@ import sk.dnd.domain.infra.BaseObject;
 public class Subrace extends BaseObject<Integer> {
 
 	private List<AbilityModifier> subraceAbilityModifiers;
-	private List<Ability> subraceAbilities;
+	private List<Feature> subraceFeatures;
 	private Map<String, SubraceLocale> locales;
 
 	private Race race;
@@ -54,16 +54,16 @@ public class Subrace extends BaseObject<Integer> {
 
 	@NotNull
 	@OneToMany
-	@JoinTable(name = "DND_SUBRACE_ABILITY",
+	@JoinTable(name = "DND_SUBRACE_FEATURE",
 		joinColumns = @JoinColumn(name = "DND_SUBRACE_ID"),
-		inverseJoinColumns = @JoinColumn(name = "DND_ABILITY_ID")
+		inverseJoinColumns = @JoinColumn(name = "DND_FEATURE_ID")
 	)
-	public List<Ability> getSubraceAbilities() {
-		return subraceAbilities;
+	public List<Feature> getSubraceFeatures() {
+		return subraceFeatures;
 	}
 
-	public void setSubraceAbilities(List<Ability> subraceAbilities) {
-		this.subraceAbilities = subraceAbilities;
+	public void setSubraceFeatures(List<Feature> subraceFeatures) {
+		this.subraceFeatures = subraceFeatures;
 	}
 
 	@NotNull

@@ -17,9 +17,9 @@ import sk.dnd.domain.character.PersonalCharacteristic;
 import sk.dnd.domain.character.race.AbilityModifier;
 import sk.dnd.domain.character.race.AbilityModifierRepository;
 import sk.dnd.domain.character.race.Race;
-import sk.dnd.domain.character.race.RaceRepository;
+import sk.dnd.domain.character.race.RaceRepositoryCustom;
 import sk.dnd.domain.character.race.Subrace;
-import sk.dnd.domain.character.race.SubraceRepository;
+import sk.dnd.domain.character.race.SubraceRepositoryCustom;
 import sk.dnd.domain.character.support.Allignment;
 
 @Component
@@ -29,13 +29,13 @@ public class CharacterServiceImpl implements CharacterService {
 	private CharacterRepository characterRepository;
 
 	@Autowired
-	private RaceRepository raceRepository;
+	private RaceRepositoryCustom raceRepositoryCustom;
 
 	@Autowired
 	private AbilityModifierRepository abilityModifierRepository;
 
 	@Autowired
-	private SubraceRepository subraceRepository;
+	private SubraceRepositoryCustom subraceRepositoryCustom;
 
 	@Autowired
 	private CharacterBackgroundRepository characterBackgroundRepository;
@@ -98,6 +98,16 @@ public class CharacterServiceImpl implements CharacterService {
 		return character;
 	}
 
+	@Override
+	public List<Race> listRaces() {
+		return raceRepositoryCustom.listAll();
+	}
+
+	@Override
+	public List<Subrace> listSubraces() {
+		return subraceRepositoryCustom.listAll();
+	}
+
 	private Character createBaseCharacter() {
 		CharacterBackground criminalBackground = characterBackgroundRepository.findById(2);
 
@@ -133,7 +143,7 @@ public class CharacterServiceImpl implements CharacterService {
 	}
 
 	private CharacterRace createCharacterRace(Character character) {
-		Race dwarf = raceRepository.findById(1);
+		Race dwarf = raceRepositoryCustom.findById(1);
 		CharacterRace characterRace = new CharacterRace();
 		characterRace.setCharacter(character);
 		characterRace.setRace(dwarf);
@@ -150,7 +160,7 @@ public class CharacterServiceImpl implements CharacterService {
 	}
 
 	private CharacterSubrace createCharacterSubrace(Character character) {
-		Subrace hillDwarf = subraceRepository.findById(1);
+		Subrace hillDwarf = subraceRepositoryCustom.findById(1);
 		CharacterSubrace characterSubrace = new CharacterSubrace();
 		characterSubrace.setCharacter(character);
 		characterSubrace.setSubrace(hillDwarf);

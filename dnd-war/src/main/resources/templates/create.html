@@ -3,14 +3,36 @@
 
 <link rel="stylesheet" th:href="@{/css/default.css}"/>
 
+<script th:src="@{/scripts/jquery-3.2.1.js}"></script>
+<!--<script th:src="@{/scripts/characterRace.js"></script>-->
+
 <head>
-	<title>Getting Started: Serving Web Content</title>
+	<title>Character creating</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<h1>Form</h1>
+<h1>Character creation:</h1>
 <form action="#" th:action="@{/createCharacter}" th:object="${characterCreateForm}" method="post">
-	<p>Name: <input type="text" th:field="*{name}"/></p>
+	<div>
+		<div>
+			<label>Name:</label>
+			<input type="text" th:field="*{name}"/>
+		</div>
+		<div>
+			<label>Race:</label>
+			<select th:field="*{race}">
+				<option th:value="0">-- not selected --</option>
+				<option th:each="race: ${races}" th:value="${race.id}" th:text="${race.locales.get('en').name}"></option>
+			</select>
+		</div>
+		<div>
+			<label>Subrace:</label>
+			<select th:field="*{subrace}">
+				<option th:value="0">-- not selected --</option>
+				<option th:each="subrace: ${subraces}" th:value="${subrace.id}" th:text="${subrace.locales.get('en').name}"></option>
+			</select>
+		</div>
+	</div>
 	<p>Level: <input type="number" th:field="*{level}"/></p>
 	<p>Hit points: <input type="number" th:field="*{hitPoints}"/></p>
 	<p>Temporary hit points: <input type="number" th:field="*{temporaryHitPoints}"/></p>

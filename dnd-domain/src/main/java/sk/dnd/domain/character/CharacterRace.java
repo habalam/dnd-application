@@ -13,9 +13,10 @@ import sk.dnd.domain.infra.BaseObject;
 @Table(name = "DND_CHARACTER_RACE")
 public class CharacterRace extends BaseObject<Integer> {
 
-	//TODO probably mandatory add of skills, languages, proficiences, resistences, ...
 	private Race race;
 	private List<AbilityModifier> abilityModifiers;
+	private List<CharacterFeature> characterRaceFeatures;
+	private List<Classification> languages;
 	private Character character;
 
 	@Id
@@ -62,5 +63,31 @@ public class CharacterRace extends BaseObject<Integer> {
 
 	public void setAbilityModifiers(List<AbilityModifier> abilityModifiers) {
 		this.abilityModifiers = abilityModifiers;
+	}
+
+	@OneToMany
+	@JoinTable(name = "DND_CHARACTER_RACE_LANGUAGE",
+		joinColumns = @JoinColumn(name = "DND_CHARACTER_ID"),
+		inverseJoinColumns = @JoinColumn(name = "DND_CLASSIFICATION_ID")
+	)
+	public List<Classification> getLanguages() {
+		return languages;
+	}
+
+	public void setLanguages(List<Classification> languages) {
+		this.languages = languages;
+	}
+
+	@OneToMany
+	@JoinTable(name = "DND_CHARACTER_RACE_FEATURE",
+		joinColumns = @JoinColumn(name = "DND_CHARACTER_ID"),
+		inverseJoinColumns = @JoinColumn(name = "DND_CHARACTER_FEATURE_ID")
+	)
+	public List<CharacterFeature> getCharacterRaceFeatures() {
+		return characterRaceFeatures;
+	}
+
+	public void setCharacterRaceFeatures(List<CharacterFeature> characterRaceFeatures) {
+		this.characterRaceFeatures = characterRaceFeatures;
 	}
 }
