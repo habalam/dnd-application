@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+	<meta charset="UTF-8"/>
+</head>
+<body>
+<div th:fragment="header">
+	<div id="header_title_bar">
+		<div id="header_icon">
+			<a th:href="@{/}">
+				<img th:src="@{/img/logo.png}"/>
+			</a>
+		</div>
+		<div id="header_text">
+			<div id="header_main_text" th:text="#{gui.header.application.name}"></div>
+			<div id="header_description_text" th:text="#{gui.header.application.name.description}"></div>
+		</div>
+		<div>
+			<a th:href="@{/creating/?lang={path}(path=${T(sk.dnd.domain.util.LangUtils).getOtherLanguage()})}" th:text="#{gui.header.localization.switch}"></a>
+		</div>
+	</div>
+	<div id="navigation_bar">
+		<div class="nav_bar_item home_icon">
+			<a th:href="@{/}">
+				<img th:src="@{/img/if_home_1608930.png}"/>
+			</a>
+		</div>
+		<div class="nav_bar_item">
+			<a th:href="@{/creating}" th:text="#{gui.header.bar.character.create}"></a>
+		</div>
+		<div class="nav_bar_item">
+			<a th:href="@{/list}" th:text="#{gui.header.bar.character.list}"></a>
+		</div>
+	</div>
+</div>
+</body>
+</html>

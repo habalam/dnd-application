@@ -10,6 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import sk.dnd.domain.character.Classification;
+import sk.dnd.domain.character.subrace.Subrace;
 import sk.dnd.domain.character.support.SizeType;
 import sk.dnd.domain.infra.BaseObject;
 
@@ -20,6 +21,7 @@ public class Race extends BaseObject<Integer> {
 	private List<AbilityModifier> raceAbilityModifiers;
 	private List<Feature> raceFeatures;
 	private Map<String, RaceLocale> locales;
+	private RaceLocale currentLocale;
 	private SizeType size;
 	private int speed;
 	private boolean darkvision;
@@ -135,5 +137,18 @@ public class Race extends BaseObject<Integer> {
 
 	public void setLanguages(List<Classification> languages) {
 		this.languages = languages;
+	}
+
+	@Transient
+	public RaceLocale getCurrentLocale() {
+		return currentLocale;
+	}
+
+	public void setCurrentLocale(RaceLocale currentLocale) {
+		this.currentLocale = currentLocale;
+	}
+
+	public void setCurrentLocale(String currentLangCode) {
+		this.currentLocale = locales.get(currentLangCode);
 	}
 }

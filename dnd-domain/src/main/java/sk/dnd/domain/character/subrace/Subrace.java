@@ -1,4 +1,4 @@
-package sk.dnd.domain.character.race;
+package sk.dnd.domain.character.subrace;
 
 import java.util.List;
 import java.util.Map;
@@ -8,6 +8,9 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import sk.dnd.domain.character.race.AbilityModifier;
+import sk.dnd.domain.character.race.Feature;
+import sk.dnd.domain.character.race.Race;
 import sk.dnd.domain.infra.BaseObject;
 
 @Entity
@@ -19,6 +22,7 @@ public class Subrace extends BaseObject<Integer> {
 	private Map<String, SubraceLocale> locales;
 
 	private Race race;
+	private SubraceLocale currentLocale;
 
 	@Override
 	@Id
@@ -86,5 +90,18 @@ public class Subrace extends BaseObject<Integer> {
 
 	public void setRace(Race race) {
 		this.race = race;
+	}
+
+	@Transient
+	public SubraceLocale getCurrentLocale() {
+		return currentLocale;
+	}
+
+	public void setCurrentLocale(String currentLangCode) {
+		this.currentLocale = locales.get(currentLangCode);
+	}
+
+	public void setCurrentLocale(SubraceLocale currentLocale) {
+		this.currentLocale = currentLocale;
 	}
 }

@@ -1,4 +1,4 @@
-package sk.dnd.domain.character;
+package sk.dnd.domain.character.background;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.hibernate.annotations.Parameter;
 import sk.dnd.domain.infra.BaseObject;
 
 @Entity
-@Table(name = "DND_CHARACTER_BACKGROUND_SPECIALITY")
-public class CharacterBackgroundSpeciality extends BaseObject<Integer> {
+@Table(name = "DND_BACKGROUND_SPECIALITY")
+public class BackgroundSpeciality extends BaseObject<Integer> {
 
 	private String langCode;
 
@@ -19,19 +19,19 @@ public class CharacterBackgroundSpeciality extends BaseObject<Integer> {
 	private String description;
 	private List<String> values;
 
-	private CharacterBackground characterBackground;
+	private Background background;
 
 
 	@Id
-	@Column(name = "DND_CHARACTER_BACKGROUND_SPECIALITY_ID", nullable = false, unique = true)
-	@GeneratedValue(generator = "DND_CHARACTER_BACKGROUND_SPECIALITY_GEN")
+	@Column(name = "DND_BACKGROUND_SPECIALITY_ID", nullable = false, unique = true)
+	@GeneratedValue(generator = "DND_BACKGROUND_SPECIALITY_GEN")
 	@GenericGenerator(
-		name = "DND_CHARACTER_BACKGROUND_SPECIALITY_GEN",
+		name = "DND_BACKGROUND_SPECIALITY_GEN",
 		strategy = "sk.dnd.domain.infra.PoolIdGenerator",
 		parameters = {
 			@Parameter(name = "table", value = "SYS_SEQUENCE"),
 			@Parameter(name = "primary_key_column", value = "SEQ_NAME"),
-			@Parameter(name = "primary_key_value", value = "DND_CHARACTER_BACKGROUND_SPECIALITY_ID"),
+			@Parameter(name = "primary_key_value", value = "DND_BACKGROUND_SPECIALITY_ID"),
 			@Parameter(name = "value_column", value = "SEQ_COUNT"),
 			@Parameter(name = "pool_size", value = "20")
 		}
@@ -41,13 +41,13 @@ public class CharacterBackgroundSpeciality extends BaseObject<Integer> {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "DND_CHARACTER_BACKGROUND_ID", nullable = false)
-	public CharacterBackground getCharacterBackground() {
-		return characterBackground;
+	@JoinColumn(name = "DND_BACKGROUND_ID", nullable = false)
+	public Background getBackground() {
+		return background;
 	}
 
-	public void setCharacterBackground(CharacterBackground characterBackground) {
-		this.characterBackground = characterBackground;
+	public void setBackground(Background background) {
+		this.background = background;
 	}
 
 	@NotNull
@@ -81,7 +81,7 @@ public class CharacterBackgroundSpeciality extends BaseObject<Integer> {
 	}
 
 	@ElementCollection
-	@CollectionTable(name = "DND_CHARACTER_BACKGROUND_SPECIALITY_VALUE", joinColumns = @JoinColumn(name = "DND_CHARACTER_BACKGROUND_SPECIALITY_ID"))
+	@CollectionTable(name = "DND_BACKGROUND_SPECIALITY_VALUE", joinColumns = @JoinColumn(name = "DND_BACKGROUND_SPECIALITY_ID"))
 	@Column(name = "VALUE")
 	public List<String> getValues() {
 		return values;

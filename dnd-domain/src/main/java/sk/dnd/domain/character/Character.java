@@ -37,9 +37,7 @@ public class Character extends BaseObject<Integer> {
 	private List<CharacterProfession> characterProfessions;
 	private CharacterBackground characterBackground;
 
-	private List<PersonalCharacteristic> personalCharacteristics;
-
-	//TODO not propertly implemented
+	//TODO not properly implemented
 	private CharacterEquipment equipment;
 
 	//TODO maybe separate to new table
@@ -248,17 +246,6 @@ public class Character extends BaseObject<Integer> {
 		this.temporaryHitPoints = temporaryHitPoints;
 	}
 
-	@NotNull
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "DND_CHARACTER_BACKGROUND_ID", nullable = false)
-	public CharacterBackground getCharacterBackground() {
-		return characterBackground;
-	}
-
-	public void setCharacterBackground(CharacterBackground characterBackground) {
-		this.characterBackground = characterBackground;
-	}
-
 	@OneToOne(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true)
 	public CharacterDimension getCharacterDimension() {
 		return characterDimension;
@@ -266,19 +253,6 @@ public class Character extends BaseObject<Integer> {
 
 	public void setCharacterDimension(CharacterDimension characterDimension) {
 		this.characterDimension = characterDimension;
-	}
-
-	@ManyToMany
-	@JoinTable(name = "DND_CHARACTER_PERTONALITY_CHARACTERISTIC",
-		joinColumns = @JoinColumn(name = "DND_CHARACTER_ID"),
-		inverseJoinColumns = @JoinColumn(name = "DND_PERSONAL_CHARACTERISTIC_ID")
-	)
-	public List<PersonalCharacteristic> getPersonalCharacteristics() {
-		return personalCharacteristics;
-	}
-
-	public void setPersonalCharacteristics(List<PersonalCharacteristic> personalCharacteristics) {
-		this.personalCharacteristics = personalCharacteristics;
 	}
 
 	@NotNull
@@ -299,6 +273,15 @@ public class Character extends BaseObject<Integer> {
 
 	public void setHitPointsCurrent(int hitPointsCurrent) {
 		this.hitPointsCurrent = hitPointsCurrent;
+	}
+
+	@OneToOne(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true)
+	public CharacterBackground getCharacterBackground() {
+		return characterBackground;
+	}
+
+	public void setCharacterBackground(CharacterBackground characterBackground) {
+		this.characterBackground = characterBackground;
 	}
 
 	@OneToOne(mappedBy = "character", cascade = CascadeType.ALL, orphanRemoval = true)

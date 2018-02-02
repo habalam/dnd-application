@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import sk.dnd.domain.character.race.AbilityModifier;
-import sk.dnd.domain.character.race.Subrace;
+import sk.dnd.domain.character.subrace.Subrace;
 import sk.dnd.domain.infra.BaseObject;
 
 @Entity

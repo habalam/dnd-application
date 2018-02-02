@@ -16,12 +16,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import sk.dnd.domain.character.Character;
 import sk.dnd.domain.character.*;
+import sk.dnd.domain.character.background.Background;
+import sk.dnd.domain.character.background.BackgroundLocale;
+import sk.dnd.domain.character.background.BackgroundRepository;
 import sk.dnd.domain.character.race.AbilityModifier;
 import sk.dnd.domain.character.race.AbilityModifierRepository;
 import sk.dnd.domain.character.race.Race;
 import sk.dnd.domain.character.race.RaceRepository;
-import sk.dnd.domain.character.race.Subrace;
-import sk.dnd.domain.character.race.SubraceRepository;
+import sk.dnd.domain.character.subrace.Subrace;
+import sk.dnd.domain.character.subrace.SubraceRepository;
 import sk.dnd.domain.character.support.Allignment;
 import sk.dnd.domain.character.support.ClassificationType;
 
@@ -43,7 +46,7 @@ public class CharacterServiceTest {
 	private SubraceRepository subraceRepository;
 
 	@Autowired
-	private CharacterBackgroundRepository characterBackgroundRepository;
+	private BackgroundRepository characterBackgroundRepository;
 
 	@Autowired
 	private ClassificationRepository classificationRepository;
@@ -59,15 +62,15 @@ public class CharacterServiceTest {
 			new String[] {"Athletics"}, new String[] {"Strength skill"});
 		Classification elvishLanguage = prepareClassification(ClassificationType.LANGUAGE, new String[] {"en"},
 			new String[] {"Elvish"}, new String[] {"Evish language"});
-		CharacterBackground characterBackground = new CharacterBackground();
+		Background characterBackground = new Background();
 		characterBackground.setSkills(Collections.singletonList(athleticsSkill));
 		characterBackground.setLanguagesCount(1);
 		entityManager.persist(characterBackground);
-		Map<String, CharacterBackgroundLocale> characterBackgroundLocales = createCharacterBackgroundLocales(characterBackground,
+		Map<String, BackgroundLocale> characterBackgroundLocales = createCharacterBackgroundLocales(characterBackground,
 			new String[] {"en"}, new String[] {"Otlander"}, new String[] {"Outlander description"});
 		characterBackground.setLocales(characterBackgroundLocales);*/
 
-		CharacterBackground criminalBackground = characterBackgroundRepository.findById(2);
+		Background criminalBackground = characterBackgroundRepository.findById(2);
 
 		character = new Character();
 		character.setName("Grondal");
@@ -86,16 +89,16 @@ public class CharacterServiceTest {
 		character.setAllignment(Allignment.GOOD_LAWFUL);
 		character.setOrigin("Test origin");
 		character.setInspired(true);
-		character.setCharacterBackground(criminalBackground);
+//		character.setCharacterBackground(criminalBackground);
 	}
 
-	private Map<String, CharacterBackgroundLocale> createCharacterBackgroundLocales(CharacterBackground characterBackground, String[] langCodes,
+	private Map<String, BackgroundLocale> createCharacterBackgroundLocales(Background characterBackground, String[] langCodes,
 		String[] names, String[] descriptions)
 	{
-		Map<String, CharacterBackgroundLocale> locales = new HashMap<>();
+		Map<String, BackgroundLocale> locales = new HashMap<>();
 		for (int i = 0; i < langCodes.length; i++) {
-			CharacterBackgroundLocale characterBackgroundLocale = new CharacterBackgroundLocale();
-			characterBackgroundLocale.setCharacterBackground(characterBackground);
+			BackgroundLocale characterBackgroundLocale = new BackgroundLocale();
+			characterBackgroundLocale.setBackground(characterBackground);
 			characterBackgroundLocale.setLangCode(langCodes[i]);
 			characterBackgroundLocale.setName(names[i]);
 			characterBackgroundLocale.setDescription(descriptions[i]);

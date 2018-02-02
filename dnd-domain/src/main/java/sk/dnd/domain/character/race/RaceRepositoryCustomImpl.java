@@ -25,4 +25,14 @@ public class RaceRepositoryCustomImpl implements RaceRepositoryCustom {
 		}
 		return racesList;
 	}
+
+	@Override
+	public List<Race> listAllWithCurrentLocale(String currentLangCode) {
+		List<Race> races = new ArrayList<>();
+		for(Race race: raceRepository.findAll()) {
+			race.setCurrentLocale(currentLangCode);
+			races.add(race);
+		}
+		return races;
+	}
 }

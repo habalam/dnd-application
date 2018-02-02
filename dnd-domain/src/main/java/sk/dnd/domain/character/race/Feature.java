@@ -19,15 +19,10 @@ import sk.dnd.domain.infra.BaseObject;
 
 @Entity
 @Table(name = "DND_FEATURE")
-//TODO nezohladnuje fungovanie abilit, iba popis
-//TODO pridat nieco ako FeatureType - raceFeature, feat, classFeature - premysliet
-//TODO pridat Feature effect - effectType (resistence, proficiency, hitPoint per level, ...) - treba zohladnit aj to ze
-// sa bude vyberat nejake mnozstvo z vybranych
-//TODO dalej character feature effect - variables pre rôzne feature effects - naparovane k feature a characteru - vyber z volitelnych veci
 public class Feature extends BaseObject<Integer> {
 
 	private Map<String, FeatureLocale> locales;
-	private List<FeatureEffect> featureEffects;
+	private List<FeatureEffect> featureEffects;     //zoznam efektov danej feature - môže ich byť viacero
 
 	@Override
 	@Id

@@ -7,4 +7,6 @@ public interface RaceRepositoryCustom {
 	Race findById(Integer id);
 
 	List<Race> listAll();
+
+	List<Race> listAllWithCurrentLocale(String currentLangCode);
 }

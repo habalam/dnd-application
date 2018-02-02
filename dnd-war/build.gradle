@@ -21,6 +21,9 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile("org.thymeleaf:thymeleaf:3.0.2.RELEASE")
+    compile("org.thymeleaf:thymeleaf-spring4:3.0.2.RELEASE")
+    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.1.1")
     compile('org.springframework.boot:spring-boot-starter')
     compile('org.springframework.boot:spring-boot-starter-actuator')
     compile('org.springframework.boot:spring-boot-starter-web')

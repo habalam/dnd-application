@@ -203,92 +203,94 @@ insert into DND_PERSONAL_CHARACTERISTIC_L (dnd_personal_characteristic_id, lang_
 insert into DND_PERSONAL_CHARACTERISTIC_L (dnd_personal_characteristic_id, lang_code, name, description) values (52, 'en', null, 'An innocent person is in prison for a crime that I committed. I’m okay with that.');
 
 -- Backgrounds
-insert into dnd_character_background (dnd_character_background_id, languages_count) values (1, 2);
-insert into dnd_character_background (dnd_character_background_id, languages_count) values (2, 0);
---insert into dnd_character_background (dnd_character_background_id) values (3);
---insert into dnd_character_background (dnd_character_background_id) values (4);
---insert into dnd_character_background (dnd_character_background_id) values (5);
---insert into dnd_character_background (dnd_character_background_id) values (6);
---insert into dnd_character_background (dnd_character_background_id) values (7);
---insert into dnd_character_background (dnd_character_background_id) values (8);
---insert into dnd_character_background (dnd_character_background_id) values (9);
---insert into dnd_character_background (dnd_character_background_id) values (10);
---insert into dnd_character_background (dnd_character_background_id) values (11);
---insert into dnd_character_background (dnd_character_background_id) values (12);
---insert into dnd_character_background (dnd_character_background_id) values (13);
+insert into dnd_background (dnd_background_id, languages_count) values (1, 2);
+insert into dnd_background (dnd_background_id, languages_count) values (2, 0);
+--insert into dnd_background (dnd_background_id) values (3);
+--insert into dnd_background (dnd_background_id) values (4);
+--insert into dnd_background (dnd_background_id) values (5);
+--insert into dnd_background (dnd_background_id) values (6);
+--insert into dnd_background (dnd_background_id) values (7);
+--insert into dnd_background (dnd_background_id) values (8);
+--insert into dnd_background (dnd_background_id) values (9);
+--insert into dnd_background (dnd_background_id) values (10);
+--insert into dnd_background (dnd_background_id) values (11);
+--insert into dnd_background (dnd_background_id) values (12);
+--insert into dnd_background (dnd_background_id) values (13);
 
-insert into DND_CHARACTER_BACKGROUND_SKILL (dnd_character_background_id, dnd_classification_id) values (1, 9);
-insert into DND_CHARACTER_BACKGROUND_SKILL (dnd_character_background_id, dnd_classification_id) values (1, 11);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 1);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 2);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 3);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 4);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 5);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 6);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 7);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 8);
-insert into DND_CHARACTER_BACKGROUND_IDEAL (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 9);
-insert into DND_CHARACTER_BACKGROUND_IDEAL (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 10);
-insert into DND_CHARACTER_BACKGROUND_IDEAL (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 11);
-insert into DND_CHARACTER_BACKGROUND_IDEAL (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 12);
-insert into DND_CHARACTER_BACKGROUND_IDEAL (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 13);
-insert into DND_CHARACTER_BACKGROUND_IDEAL (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 14);
-insert into DND_CHARACTER_BACKGROUND_BOND (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 15);
-insert into DND_CHARACTER_BACKGROUND_BOND (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 16);
-insert into DND_CHARACTER_BACKGROUND_BOND (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 17);
-insert into DND_CHARACTER_BACKGROUND_BOND (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 18);
-insert into DND_CHARACTER_BACKGROUND_BOND (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 19);
-insert into DND_CHARACTER_BACKGROUND_BOND (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 20);
-insert into DND_CHARACTER_BACKGROUND_FLAW (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 21);
-insert into DND_CHARACTER_BACKGROUND_FLAW (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 22);
-insert into DND_CHARACTER_BACKGROUND_FLAW (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 23);
-insert into DND_CHARACTER_BACKGROUND_FLAW (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 24);
-insert into DND_CHARACTER_BACKGROUND_FLAW (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 25);
-insert into DND_CHARACTER_BACKGROUND_FLAW (dnd_character_background_id, dnd_personal_characteristic_id) values (1, 26);
+insert into DND_BACKGROUND_SKILL (dnd_background_id, dnd_classification_id) values (1, 9);
+insert into DND_BACKGROUND_SKILL (dnd_background_id, dnd_classification_id) values (1, 11);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (1, 1);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (1, 2);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (1, 3);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (1, 4);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (1, 5);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (1, 6);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (1, 7);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (1, 8);
+insert into DND_BACKGROUND_IDEAL (dnd_background_id, dnd_personal_characteristic_id) values (1, 9);
+insert into DND_BACKGROUND_IDEAL (dnd_background_id, dnd_personal_characteristic_id) values (1, 10);
+insert into DND_BACKGROUND_IDEAL (dnd_background_id, dnd_personal_characteristic_id) values (1, 11);
+insert into DND_BACKGROUND_IDEAL (dnd_background_id, dnd_personal_characteristic_id) values (1, 12);
+insert into DND_BACKGROUND_IDEAL (dnd_background_id, dnd_personal_characteristic_id) values (1, 13);
+insert into DND_BACKGROUND_IDEAL (dnd_background_id, dnd_personal_characteristic_id) values (1, 14);
+insert into DND_BACKGROUND_BOND (dnd_background_id, dnd_personal_characteristic_id) values (1, 15);
+insert into DND_BACKGROUND_BOND (dnd_background_id, dnd_personal_characteristic_id) values (1, 16);
+insert into DND_BACKGROUND_BOND (dnd_background_id, dnd_personal_characteristic_id) values (1, 17);
+insert into DND_BACKGROUND_BOND (dnd_background_id, dnd_personal_characteristic_id) values (1, 18);
+insert into DND_BACKGROUND_BOND (dnd_background_id, dnd_personal_characteristic_id) values (1, 19);
+insert into DND_BACKGROUND_BOND (dnd_background_id, dnd_personal_characteristic_id) values (1, 20);
+insert into DND_BACKGROUND_FLAW (dnd_background_id, dnd_personal_characteristic_id) values (1, 21);
+insert into DND_BACKGROUND_FLAW (dnd_background_id, dnd_personal_characteristic_id) values (1, 22);
+insert into DND_BACKGROUND_FLAW (dnd_background_id, dnd_personal_characteristic_id) values (1, 23);
+insert into DND_BACKGROUND_FLAW (dnd_background_id, dnd_personal_characteristic_id) values (1, 24);
+insert into DND_BACKGROUND_FLAW (dnd_background_id, dnd_personal_characteristic_id) values (1, 25);
+insert into DND_BACKGROUND_FLAW (dnd_background_id, dnd_personal_characteristic_id) values (1, 26);
 
-insert into DND_CHARACTER_BACKGROUND_SKILL (dnd_character_background_id, dnd_classification_id) values (2, 15);
-insert into DND_CHARACTER_BACKGROUND_SKILL (dnd_character_background_id, dnd_classification_id) values (2, 4);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 27);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 28);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 29);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 30);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 31);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 32);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 33);
-insert into DND_CHARACTER_BACKGROUND_TRAIT (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 34);
-insert into DND_CHARACTER_BACKGROUND_IDEAL (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 35);
-insert into DND_CHARACTER_BACKGROUND_IDEAL (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 36);
-insert into DND_CHARACTER_BACKGROUND_IDEAL (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 37);
-insert into DND_CHARACTER_BACKGROUND_IDEAL (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 38);
-insert into DND_CHARACTER_BACKGROUND_IDEAL (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 39);
-insert into DND_CHARACTER_BACKGROUND_IDEAL (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 40);
-insert into DND_CHARACTER_BACKGROUND_BOND (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 41);
-insert into DND_CHARACTER_BACKGROUND_BOND (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 42);
-insert into DND_CHARACTER_BACKGROUND_BOND (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 43);
-insert into DND_CHARACTER_BACKGROUND_BOND (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 44);
-insert into DND_CHARACTER_BACKGROUND_BOND (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 45);
-insert into DND_CHARACTER_BACKGROUND_BOND (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 46);
-insert into DND_CHARACTER_BACKGROUND_FLAW (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 47);
-insert into DND_CHARACTER_BACKGROUND_FLAW (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 48);
-insert into DND_CHARACTER_BACKGROUND_FLAW (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 49);
-insert into DND_CHARACTER_BACKGROUND_FLAW (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 50);
-insert into DND_CHARACTER_BACKGROUND_FLAW (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 51);
-insert into DND_CHARACTER_BACKGROUND_FLAW (dnd_character_background_id, dnd_personal_characteristic_id) values (2, 52);
+insert into DND_BACKGROUND_SKILL (dnd_background_id, dnd_classification_id) values (2, 15);
+insert into DND_BACKGROUND_SKILL (dnd_background_id, dnd_classification_id) values (2, 4);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (2, 27);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (2, 28);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (2, 29);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (2, 30);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (2, 31);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (2, 32);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (2, 33);
+insert into DND_BACKGROUND_TRAIT (dnd_background_id, dnd_personal_characteristic_id) values (2, 34);
+insert into DND_BACKGROUND_IDEAL (dnd_background_id, dnd_personal_characteristic_id) values (2, 35);
+insert into DND_BACKGROUND_IDEAL (dnd_background_id, dnd_personal_characteristic_id) values (2, 36);
+insert into DND_BACKGROUND_IDEAL (dnd_background_id, dnd_personal_characteristic_id) values (2, 37);
+insert into DND_BACKGROUND_IDEAL (dnd_background_id, dnd_personal_characteristic_id) values (2, 38);
+insert into DND_BACKGROUND_IDEAL (dnd_background_id, dnd_personal_characteristic_id) values (2, 39);
+insert into DND_BACKGROUND_IDEAL (dnd_background_id, dnd_personal_characteristic_id) values (2, 40);
+insert into DND_BACKGROUND_BOND (dnd_background_id, dnd_personal_characteristic_id) values (2, 41);
+insert into DND_BACKGROUND_BOND (dnd_background_id, dnd_personal_characteristic_id) values (2, 42);
+insert into DND_BACKGROUND_BOND (dnd_background_id, dnd_personal_characteristic_id) values (2, 43);
+insert into DND_BACKGROUND_BOND (dnd_background_id, dnd_personal_characteristic_id) values (2, 44);
+insert into DND_BACKGROUND_BOND (dnd_background_id, dnd_personal_characteristic_id) values (2, 45);
+insert into DND_BACKGROUND_BOND (dnd_background_id, dnd_personal_characteristic_id) values (2, 46);
+insert into DND_BACKGROUND_FLAW (dnd_background_id, dnd_personal_characteristic_id) values (2, 47);
+insert into DND_BACKGROUND_FLAW (dnd_background_id, dnd_personal_characteristic_id) values (2, 48);
+insert into DND_BACKGROUND_FLAW (dnd_background_id, dnd_personal_characteristic_id) values (2, 49);
+insert into DND_BACKGROUND_FLAW (dnd_background_id, dnd_personal_characteristic_id) values (2, 50);
+insert into DND_BACKGROUND_FLAW (dnd_background_id, dnd_personal_characteristic_id) values (2, 51);
+insert into DND_BACKGROUND_FLAW (dnd_background_id, dnd_personal_characteristic_id) values (2, 52);
 
-insert into DND_CHARACTER_BACKGROUND_L (dnd_character_background_id, lang_code, name, description, feature_name, feature_description) values (1, 'en', 'Acolyte', 'You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric—performing sacred rites is not the same thing as channeling divine power. Choose a god, a pantheon of gods, or some other quasidivine being, and work with your DM to detail the nature of your religious service. Appendix B contains a sample pantheon, from the Forgotten Realms setting. Were you a lesser functionary in a temple, raised from childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced a call to serve your god in a different way? Perhaps you were the leader of a small cult outside of any established temple structure, or even an occult group that served a fiendish master that you now deny.', 'Shelter of the Faithful', 'As an acolyte, you command the respect of those who share your faith, and you can perform the religious ceremonies of your deity. You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion will support you (but only you) at a modest lifestyle. You might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could be the temple where you used to serve, if you remain on good terms with it, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with your temple.');
-insert into DND_CHARACTER_BACKGROUND_L (dnd_character_background_id, lang_code, name, description, feature_name, feature_description) values (2, 'en', 'Criminal', 'You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and still have contacts within the criminal underworld. You’re far closer than most people to the world of murder, theft, and violence that pervades the underbelly of civilization, and you have survived up to this point by flouting the rules and regulations of society', 'Criminal Contact', 'You have a reliable and trustworthy contact who acts as your liaison to a network of other criminals. You know how to get messages to and from your contact, even over great distances; specifically, you know the local messengers, corrupt caravan masters, and seedy sailors who can deliver messages for you.');
+insert into DND_BACKGROUND_L (dnd_background_id, lang_code, name, description, feature_name, feature_description) values (1, 'en', 'Acolyte', 'You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric—performing sacred rites is not the same thing as channeling divine power. Choose a god, a pantheon of gods, or some other quasidivine being, and work with your DM to detail the nature of your religious service. Appendix B contains a sample pantheon, from the Forgotten Realms setting. Were you a lesser functionary in a temple, raised from childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced a call to serve your god in a different way? Perhaps you were the leader of a small cult outside of any established temple structure, or even an occult group that served a fiendish master that you now deny.', 'Shelter of the Faithful', 'As an acolyte, you command the respect of those who share your faith, and you can perform the religious ceremonies of your deity. You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion will support you (but only you) at a modest lifestyle. You might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could be the temple where you used to serve, if you remain on good terms with it, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with your temple.');
+insert into DND_BACKGROUND_L (dnd_background_id, lang_code, name, description, feature_name, feature_description) values (1, 'sk', 'Akolyta', 'You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric—performing sacred rites is not the same thing as channeling divine power. Choose a god, a pantheon of gods, or some other quasidivine being, and work with your DM to detail the nature of your religious service. Appendix B contains a sample pantheon, from the Forgotten Realms setting. Were you a lesser functionary in a temple, raised from childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced a call to serve your god in a different way? Perhaps you were the leader of a small cult outside of any established temple structure, or even an occult group that served a fiendish master that you now deny.', 'Shelter of the Faithful', 'As an acolyte, you command the respect of those who share your faith, and you can perform the religious ceremonies of your deity. You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion will support you (but only you) at a modest lifestyle. You might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could be the temple where you used to serve, if you remain on good terms with it, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with your temple.');
+insert into DND_BACKGROUND_L (dnd_background_id, lang_code, name, description, feature_name, feature_description) values (2, 'en', 'Criminal', 'You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and still have contacts within the criminal underworld. You’re far closer than most people to the world of murder, theft, and violence that pervades the underbelly of civilization, and you have survived up to this point by flouting the rules and regulations of society', 'Criminal Contact', 'You have a reliable and trustworthy contact who acts as your liaison to a network of other criminals. You know how to get messages to and from your contact, even over great distances; specifically, you know the local messengers, corrupt caravan masters, and seedy sailors who can deliver messages for you.');
+insert into DND_BACKGROUND_L (dnd_background_id, lang_code, name, description, feature_name, feature_description) values (2, 'sk', 'Zločinec', 'You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and still have contacts within the criminal underworld. You’re far closer than most people to the world of murder, theft, and violence that pervades the underbelly of civilization, and you have survived up to this point by flouting the rules and regulations of society', 'Criminal Contact', 'You have a reliable and trustworthy contact who acts as your liaison to a network of other criminals. You know how to get messages to and from your contact, even over great distances; specifically, you know the local messengers, corrupt caravan masters, and seedy sailors who can deliver messages for you.');
 
 -- CharacterBackground specialities
-insert into DND_CHARACTER_BACKGROUND_SPECIALITY (DND_CHARACTER_BACKGROUND_SPECIALITY_ID, dnd_character_background_id, lang_code, name, description) values (1, 2, 'en', 'Criminal Speciality', 'There are many kinds of criminals, and within a thieves’ guild or similar criminal organization, individual members have particular specialties. Even criminals who operate outside of such organizations have strong preferences for certain kinds of crimes over others. Choose the role you played in your criminal life, or roll on the table below.');
+insert into DND_BACKGROUND_SPECIALITY (DND_BACKGROUND_SPECIALITY_ID, dnd_background_id, lang_code, name, description) values (1, 2, 'en', 'Criminal Speciality', 'There are many kinds of criminals, and within a thieves’ guild or similar criminal organization, individual members have particular specialties. Even criminals who operate outside of such organizations have strong preferences for certain kinds of crimes over others. Choose the role you played in your criminal life, or roll on the table below.');
 
-insert into DND_CHARACTER_BACKGROUND_SPECIALITY_VALUE (dnd_character_background_speciality_id, value) values (1, 'Blackmailer');
-insert into DND_CHARACTER_BACKGROUND_SPECIALITY_VALUE (dnd_character_background_speciality_id, value) values (1, 'Burglar');
-insert into DND_CHARACTER_BACKGROUND_SPECIALITY_VALUE (dnd_character_background_speciality_id, value) values (1, 'Enforcer');
-insert into DND_CHARACTER_BACKGROUND_SPECIALITY_VALUE (dnd_character_background_speciality_id, value) values (1, 'Fence');
-insert into DND_CHARACTER_BACKGROUND_SPECIALITY_VALUE (dnd_character_background_speciality_id, value) values (1, 'Highway robber');
-insert into DND_CHARACTER_BACKGROUND_SPECIALITY_VALUE (dnd_character_background_speciality_id, value) values (1, 'Hired killer');
-insert into DND_CHARACTER_BACKGROUND_SPECIALITY_VALUE (dnd_character_background_speciality_id, value) values (1, 'Pickpocket');
-insert into DND_CHARACTER_BACKGROUND_SPECIALITY_VALUE (dnd_character_background_speciality_id, value) values (1, 'Smuggler');
+insert into DND_BACKGROUND_SPECIALITY_VALUE (dnd_background_speciality_id, value) values (1, 'Blackmailer');
+insert into DND_BACKGROUND_SPECIALITY_VALUE (dnd_background_speciality_id, value) values (1, 'Burglar');
+insert into DND_BACKGROUND_SPECIALITY_VALUE (dnd_background_speciality_id, value) values (1, 'Enforcer');
+insert into DND_BACKGROUND_SPECIALITY_VALUE (dnd_background_speciality_id, value) values (1, 'Fence');
+insert into DND_BACKGROUND_SPECIALITY_VALUE (dnd_background_speciality_id, value) values (1, 'Highway robber');
+insert into DND_BACKGROUND_SPECIALITY_VALUE (dnd_background_speciality_id, value) values (1, 'Hired killer');
+insert into DND_BACKGROUND_SPECIALITY_VALUE (dnd_background_speciality_id, value) values (1, 'Pickpocket');
+insert into DND_BACKGROUND_SPECIALITY_VALUE (dnd_background_speciality_id, value) values (1, 'Smuggler');
 
 -- Ability modifiers
 insert into DND_ABILITY_MODIFIER (dnd_ability_modifier_id, ability_type, value) values (1, 'CONSTITUTION', 2);
@@ -351,6 +353,11 @@ insert into DND_RACE_L (dnd_race_id, lang_code, name, age, alignment, size, desc
 'Most dwarves are lawful, believing firmly in the benefits of a well-ordered society. They tend toward good as well, with a strong sense of fair play and a belief that everyone deserves to share in the benefits of a just order.',
 ' Dwarves stand between 4 and 5 feet tall and average about 150 pounds.',
 'Test description');
+insert into DND_RACE_L (dnd_race_id, lang_code, name, age, alignment, size, description) values (1, 'sk', 'Trpaslík',
+'Trpaslíci dospievajú v rovnakom veku ako ľudia, ale za maladých sú považovaný kým nedosiahnu 50 rokov. V priemere sa dožívajú okolo 350 rokov.',
+'Väčšina trpaslíkov je zákonná, pevne veriaca vo výhody dobre organizovanej spoločnosti. Rovnako tiahnu k dobru, so silným zmyslom pre fair play a vierov, že každý si zaslúži zdielať výhody spravodlivého poriadku.',
+'Trpaslíci merajú medzi 4 a 5 stomapy a priemerne vážia okolo 150 libier.',
+'Test description');
 
 insert into DND_RACE_ABILITY_MODIFIER (dnd_race_id, dnd_ability_modifier_id) values (1, 1);
 insert into DND_RACE_LANGUAGE (dnd_race_id, dnd_classification_id) values (1, 20);
@@ -366,8 +373,12 @@ insert into DND_SUBRACE (dnd_subrace_id, dnd_race_id) values (2, 1);
 
 insert into DND_SUBRACE_L (dnd_subrace_id, lang_code, name, description) values (1, 'en', 'Hill Dwarf',
 'As a hill dwarf, you have keen senses, deep intuition, and remarkable resilience. The gold dwarves of Faerûn in their mighty southern kingdom are hill dwarves, as are the exiled Neidar and the debased Klar of Krynn in the Dragonlance setting.');
+insert into DND_SUBRACE_L (dnd_subrace_id, lang_code, name, description) values (1, 'sk', 'Horský trpaslík',
+'Ako horský trpaslík ste silný a robustný, navyknutý na ťažký život v drsnom prostredí. Ste pravedepodobne pomerne vysoký (na trpaslíka) a inklinujete skôr k svetlejšiemu sfarbeniu. Štítový trpaslíci severného Faerunu, ako aj vládnuci Hylarský klan a šľachtický Daewarský klan z Dračej Kopije patria medzi horských trpaslíkov.');
 insert into DND_SUBRACE_L (dnd_subrace_id, lang_code, name, description) values (2, 'en', 'Mountain Dwarf',
 'As a mountain dwarf, you’re strong and hardy, accustomed to a difficult life in rugged terrain. You’re probably on the tall side (for a dwarf), and tend toward lighter coloration. The shield dwarves of northern Faerûn, as well as the ruling Hylar clan and the noble Daewar clan of Dragonlance, are mountain dwarves.');
+insert into DND_SUBRACE_L (dnd_subrace_id, lang_code, name, description) values (2, 'sk', 'Kopcový trpaslík',
+'Ako kopcový trpaslík máte ostré zmysly, rozvinuté podvedomie a pozoruhodnú húževnatosť. Zlatí trpaslíci z Faerunu vo svojom mocnom južnom kráľovstve sú kopcoví trpaslíci, ako aj vyhostení Neidari a odvrhnutí Klari z Krynnu v prostredí Dračej Kopije.');
 
 insert into DND_SUBRACE_ABILITY_MODIFIER (dnd_subrace_id, dnd_ability_modifier_id) values (1, 2);
 insert into DND_SUBRACE_ABILITY_MODIFIER (dnd_subrace_id, dnd_ability_modifier_id) values (2, 3);
@@ -377,7 +388,7 @@ insert into DND_SUBRACE_FEATURE (dnd_subrace_id, dnd_feature_id) values (2, 6);
 
 -- Sequencers
 insert into sys_sequence (seq_name, seq_count) values ('DND_CLASSIFICATION_ID', 1000000);
-insert into sys_sequence (seq_name, seq_count) values ('DND_CHARACTER_BACKGROUND_ID', 1000000);
+insert into sys_sequence (seq_name, seq_count) values ('DND_BACKGROUND_ID', 1000000);
 insert into sys_sequence (seq_name, seq_count) values ('DND_PERSONAL_CHARACTERISTIC_ID', 1000000);
-insert into sys_sequence (seq_name, seq_count) values ('DND_CHARACTER_BACKGROUND_SPECIALITY_ID', 1000000);
+insert into sys_sequence (seq_name, seq_count) values ('DND_BACKGROUND_SPECIALITY_ID', 1000000);
 insert into sys_sequence (seq_name, seq_count) values ('DND_ABILITY_MODIFIER_ID', 1000000);

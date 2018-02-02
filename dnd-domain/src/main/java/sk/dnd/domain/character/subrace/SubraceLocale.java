@@ -1,4 +1,4 @@
-package sk.dnd.domain.character.race;
+package sk.dnd.domain.character.subrace;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;

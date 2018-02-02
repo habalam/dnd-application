@@ -1,61 +1,105 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
-
-<link rel="stylesheet" th:href="@{/css/default.css}"/>
-
-<script th:src="@{/scripts/jquery-3.2.1.js}"></script>
-<!--<script th:src="@{/scripts/characterRace.js"></script>-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:layout="http://www.w3.org/1999/xhtml" xsi:schemaLocation="http://www.thymeleaf.org "
+	layout:decorate="~{layout/dndpage}">
 
 <head>
-	<title>Character creating</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title th:text="#{gui.createcharacter.title}"></title>
 </head>
 <body>
-<h1>Character creation:</h1>
-<form action="#" th:action="@{/createCharacter}" th:object="${characterCreateForm}" method="post">
-	<div>
-		<div>
-			<label>Name:</label>
-			<input type="text" th:field="*{name}"/>
+<div layout:fragment="content">
+	<form action="#" th:action="@{/createCharacter}" th:object="${characterCreateForm}" method="post">
+		<div class="options_bar">
+
+		</div>
+		<div class="content_panel">
+			<div>
+				<label th:text="#{gui.createcharacter.label.name}"></label>
+				<input type="text" th:field="*{name}"/>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.gender}"></label>
+				<select th:field="*{gender}">
+					<option th:each="gender: ${genders}" th:value="${gender}" th:text="${T(sk.dnd.util.DndWebFunctions).enumContextLocalization(gender)}"></option>
+				</select>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.allignment}"></label>
+				<select th:field="*{allignment}">
+					<option th:each="allignment: ${allignments}" th:value="${allignment}" th:text="${T(sk.dnd.util.DndWebFunctions).enumContextLocalization(allignment)}"></option>
+				</select>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.background}"></label>
+				<select th:field="*{background}">
+					<option th:each="background: ${backgrounds}" th:value="${background.id}" th:text="${background.currentLocale.name}"></option>
+				</select>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.race}"></label>
+				<select th:field="*{race}">
+					<option th:each="race: ${races}" th:value="${race.id}" th:text="${race.currentLocale.name}"></option>
+				</select>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.subrace}"></label>
+				<select th:field="*{subrace}">
+					<option th:each="subrace: ${subraces}" th:value="${subrace.id}" th:text="${subrace.currentLocale.name}"></option>
+				</select>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.level}"></label>
+				<input type="number" th:field="*{level}"/>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.hitpoints}"></label>
+				<input type="number" th:field="*{hitPoints}"/>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.temporaryhitpoints}"></label>
+				<input type="number" th:field="*{temporaryHitPoints}"/>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.wounds}"></label>
+				<input type="number" th:field="*{wounds}"/>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.strength}"></label>
+				<input type="number" th:field="*{strength}"/>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.dexterity}"></label>
+				<input type="number" th:field="*{dexterity}"/>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.constitution}"></label>
+				<input type="number" th:field="*{constitution}"/>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.wisdom}"></label>
+				<input type="number" th:field="*{wisdom}"/>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.intelligence}"></label>
+				<input type="number" th:field="*{intelligence}"/>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.charisma}"></label>
+				<input type="number" th:field="*{charisma}"/>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.inspiration}"></label>
+				<input type="checkbox" th:field="*{inspired}"/>
+			</div>
+			<div>
+				<label th:text="#{gui.createcharacter.label.origin}"></label>
+				<input type="text" th:field="*{origin}"/>
+			</div>
 		</div>
 		<div>
-			<label>Race:</label>
-			<select th:field="*{race}">
-				<option th:value="0">-- not selected --</option>
-				<option th:each="race: ${races}" th:value="${race.id}" th:text="${race.locales.get('en').name}"></option>
-			</select>
+			<input th:value="#{gui.global.button.save}" type="submit"/>
+			<a th:href="@{/reset}" th:text="#{gui.global.button.reset}"></a>
 		</div>
-		<div>
-			<label>Subrace:</label>
-			<select th:field="*{subrace}">
-				<option th:value="0">-- not selected --</option>
-				<option th:each="subrace: ${subraces}" th:value="${subrace.id}" th:text="${subrace.locales.get('en').name}"></option>
-			</select>
-		</div>
-	</div>
-	<p>Level: <input type="number" th:field="*{level}"/></p>
-	<p>Hit points: <input type="number" th:field="*{hitPoints}"/></p>
-	<p>Temporary hit points: <input type="number" th:field="*{temporaryHitPoints}"/></p>
-	<p>Wounds: <input type="number" th:field="*{wounds}"/></p>
-	<p>Gender:
-		<select th:field="*{gender}">
-			<option th:each="gender: ${genders}" th:value="${gender}" th:text="${gender}"></option>
-		</select>
-	</p>
-	<p>Allignment:
-		<select th:field="*{allignment}">
-			<option th:each="allignment: ${allignments}" th:value="${allignment}" th:text="${allignment}"></option>
-		</select>
-	</p>
-	<p>Strength: <input type="number" th:field="*{strength}"/></p>
-	<p>Dexterity: <input type="number" th:field="*{dexterity}"/></p>
-	<p>Constitution: <input type="number" th:field="*{constitution}"/></p>
-	<p>Wisdom: <input type="number" th:field="*{wisdom}"/></p>
-	<p>Intelligence: <input type="number" th:field="*{intelligence}"/></p>
-	<p>Charisma: <input type="number" th:field="*{charisma}"/></p>
-	<p>Inspiration: <input type="checkbox" th:field="*{inspired}"/></p>
-	<p>Origin: <input type="text" th:field="*{origin}"/></p>
-	<p><input type="submit" value="Submit"/><input type="reset" value="Reset"/></p>
-</form>
+	</form>
+</div>
 </body>
 </html>

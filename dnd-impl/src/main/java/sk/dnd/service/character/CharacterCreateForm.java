@@ -1,8 +1,9 @@
 package sk.dnd.service.character;
 
+import sk.dnd.domain.character.background.Background;
 import sk.dnd.domain.character.Gender;
 import sk.dnd.domain.character.race.Race;
-import sk.dnd.domain.character.race.Subrace;
+import sk.dnd.domain.character.subrace.Subrace;
 import sk.dnd.domain.character.support.Allignment;
 
 public class CharacterCreateForm {
@@ -17,6 +18,7 @@ public class CharacterCreateForm {
 	private Race race;
 	private Subrace subrace;
 	private Gender gender;
+	private Background background;
 	private Allignment allignment;
 
 	private Integer strength;
@@ -171,5 +173,34 @@ public class CharacterCreateForm {
 
 	public void setSubrace(Subrace subrace) {
 		this.subrace = subrace;
+	}
+
+	public void reset() {
+		name = null;
+		level = null;
+		hitPoints = null;
+		temporaryHitPoints = null;
+		hitPointsCurrent = null;
+		wounds = null;
+		race = null;
+		subrace = null;
+		gender = null;
+		allignment = null;
+		strength = null;
+		dexterity = null;
+		constitution = null;
+		wisdom = null;
+		intelligence = null;
+		charisma = null;
+		inspired = false;
+		origin = null;
+	}
+
+	public Background getBackground() {
+		return background;
+	}
+
+	public void setBackground(Background background) {
+		this.background = background;
 	}
 }

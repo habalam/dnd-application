@@ -8,5 +8,9 @@ package sk.dnd.domain.character.support;
 public enum ClassificationType {
 	SKILL,
 	TOOL,
-	LANGUAGE
+	LANGUAGE,
+	DMG_TYPE,
+	RESISTENCE,
+	WEAPON_TYPE,
+	ARMOR_TYPE
 }

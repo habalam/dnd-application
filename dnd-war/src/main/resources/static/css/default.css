@@ -1,3 +1,128 @@
 h1 {
 	color:red;
 }
+
+body {
+	margin: 0 auto;
+}
+
+div.content {
+	min-height: 480px;
+}
+
+div.main_window {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+div#header_icon {
+	float: left;
+	padding-top: 3px;
+	width: 420px;
+}
+
+div#header_main_text {
+	font-size: 40px;
+	text-shadow: 1px 1px #163d55;
+}
+
+div#header_description_text {
+	font-size: 17px;
+}
+
+div#header_text {
+	float: left;
+	padding-top: 3px;
+	width: 445px;
+}
+
+div#header_title_bar {
+	height: 80px;
+}
+
+div#navigation_bar {
+    height: 50px;
+    background-color: #ff3a3a;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+div.nav_bar_item {
+    margin-top: 16px;
+    float: left;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgb(31, 108, 154);
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+div.nav_bar_item a {
+	font-size: 18px;
+    text-decoration: none;
+    color: white;
+    text-shadow: 1px 1px #163d55;
+}
+
+div.nav_bar_item.home_icon {
+	height: 20.8px;
+}
+
+div.nav_bar_item.home_icon img {
+	margin-top: -6px;
+}
+
+div.options_bar {
+	float: left;
+    width: 210px;
+    height: 500px;
+    margin-right: 5px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+div.content_panel {
+	float: left;
+    width: 776px;
+    height: 500px;
+    margin-left: 5px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+div.footer {
+	background-color: #d03838;
+        border-top-style: solid;
+        border-top-width: 2px;
+        border-top-color: #a70808;
+        padding-top: 30px;
+        padding-bottom: 70px;
+        padding-left: 30px;
+        padding-right: 30px;
+}
+
+div#footer_links {
+    text-align: center;
+}
+
+div.footer_link {
+	padding-left: 7px;
+    padding-right: 10px;
+    display: inline-block;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: #423737;
+}
+
+div.footer_link_last {
+	padding-left: 7px;
+    padding-right: 10px;
+    display: inline-block;
+}
+
+div#footer_copyright {
+	text-align: center;
+	padding-top: 10px;
+}

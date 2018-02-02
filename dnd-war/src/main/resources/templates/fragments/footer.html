@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+	<meta charset="UTF-8"/>
+</head>
+<body>
+<div th:fragment="footer" class="footer">
+	<div id="footer_links">
+		<div class="footer_link">
+			<a th:href="@{/home}" th:text="#{gui.homepage}"></a>
+		</div>
+		<div class="footer_link">
+			<a th:href="@{/accesibility}" th:text="#{gui.footer.link.accesibility}"></a>
+		</div>
+		<div class="footer_link">
+			<a th:href="@{/sitemap}" th:text="#{gui.footer.link.sitemap}"></a>
+		</div>
+		<div class="footer_link_last">
+			<a th:href="@{/contacts}" th:text="#{gui.footer.link.contacts}"></a>
+		</div>
+	</div>
+	<div id="footer_copyright" th:text="#{gui.copyright}"></div>
+</div>
+</body>
+</html>
