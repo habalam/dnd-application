@@ -19,7 +19,7 @@ public class FeatureEffect extends BaseObject<Integer> {
 	private FeatureEffectType featureType;
 	private List<Classification> classificationsToSelect;   //pre pripad vyberu nutnosti vyberu z mnoziny objektov/classifications
 	private Integer valuesToSelect; //počet koľko objektov sa vyberá z kolekcie vyššie
-	private Integer value;  // pri niektorých FeatureEffectType bude stačiť tento type + hodnota
+	private Integer value;  // pri niektorých FeatureEffectType bude stačiť type + hodnota
 
 	@Id
 	@Column(name = "DND_FEATURE_EFFECT_ID", nullable = false)

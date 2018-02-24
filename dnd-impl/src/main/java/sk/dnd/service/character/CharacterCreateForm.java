@@ -5,6 +5,7 @@ import sk.dnd.domain.character.Gender;
 import sk.dnd.domain.character.race.Race;
 import sk.dnd.domain.character.subrace.Subrace;
 import sk.dnd.domain.character.support.Allignment;
+import sk.dnd.domain.character.support.Height;
 
 public class CharacterCreateForm {
 
@@ -20,6 +21,9 @@ public class CharacterCreateForm {
 	private Gender gender;
 	private Background background;
 	private Allignment allignment;
+
+	private Height height;
+	private int weight;
 
 	private Integer strength;
 	private Integer dexterity;
@@ -175,6 +179,48 @@ public class CharacterCreateForm {
 		this.subrace = subrace;
 	}
 
+	public Height getHeight() {
+		return height;
+	}
+
+	public int getFeets() {
+		return height != null ? height.getFeets() : 0;
+	}
+
+	public void setFeets(int feets) {
+		if(height == null) {
+			height = new Height();
+		}
+		height.setFeets(feets);
+	}
+
+	public int getInches() {
+		return height != null ? height.getInches() : 0;
+	}
+
+	public void setInches(int inches) {
+		if(height == null) {
+			height = new Height();
+		}
+		height.setInches(inches);
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	public Background getBackground() {
+		return background;
+	}
+
+	public void setBackground(Background background) {
+		this.background = background;
+	}
+
 	public void reset() {
 		name = null;
 		level = null;
@@ -194,13 +240,5 @@ public class CharacterCreateForm {
 		charisma = null;
 		inspired = false;
 		origin = null;
-	}
-
-	public Background getBackground() {
-		return background;
-	}
-
-	public void setBackground(Background background) {
-		this.background = background;
 	}
 }

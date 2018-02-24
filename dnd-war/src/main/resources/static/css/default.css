@@ -42,7 +42,7 @@ div#header_title_bar {
 
 div#navigation_bar {
     height: 50px;
-    background-color: #ff3a3a;
+    background-color: #d72d2e;
     margin-top: 8px;
     margin-bottom: 5px;
     padding-left: 10px;
@@ -79,8 +79,23 @@ div.options_bar {
     width: 210px;
     height: 500px;
     margin-right: 5px;
-    border-style: solid;
-    border-width: 1px;
+    /*border-style: solid;
+    border-width: 1px;*/
+}
+
+a.options_bar.option {
+    display: block;
+    text-align: CENTER;
+    height: 30px;
+    margin-top: 10px;
+    padding-top: 13px;
+    color: white;
+    text-decoration: none;
+}
+
+div.option {
+	background: url("../img/dnd_text_background_small.png") no-repeat;
+	background-position: -40px;
 }
 
 div.content_panel {
@@ -93,14 +108,14 @@ div.content_panel {
 }
 
 div.footer {
-	background-color: #d03838;
-        border-top-style: solid;
-        border-top-width: 2px;
-        border-top-color: #a70808;
-        padding-top: 30px;
-        padding-bottom: 70px;
-        padding-left: 30px;
-        padding-right: 30px;
+	background-color: #d72d2e;
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: #a70808;
+    padding-top: 30px;
+    padding-bottom: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 div#footer_links {

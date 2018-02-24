@@ -1,15 +1,15 @@
 package sk.dnd.controller;
 
-import java.util.Locale;
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import sk.dnd.domain.character.Character;
 import sk.dnd.domain.character.Gender;
@@ -52,4 +52,19 @@ public class CharacterCreateController {
 		model.addAttribute("subraces", characterService.listSubraces(currentLangCode));
 		model.addAttribute("backgrounds", characterService.listBackgrounds(currentLangCode));
 	}
+
+	//TODO URL pre ajaxove volania oddelit niekam mimo
+	//TODO prerobiť na nejakú variantu "cache" resp. iné využitie trvalo inicializovaných objektov upratovanych cez Observer/Observable
+	@RequestMapping("/subraces")
+	@ResponseBody
+	public List<String> getSubraces(@RequestParam("raceId") Integer raceId) {
+		return characterService.listSubraceJsonsByRaceWithCurrentLocale(raceId, LangUtils.getCurrentLangCode());
+	}
+
+	@RequestMapping("/subrace/physiognomy")
+	@ResponseBody
+	public String getSubracePhysiognomi(@RequestParam("subraceId") Integer subraceId) {
+		return characterService.getSubracePhysiognomyJson(subraceId);
+	}
+
 }

@@ -1,5 +1,7 @@
 package sk.dnd.domain.character.subrace;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -10,4 +12,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface SubraceRepository extends CrudRepository<Subrace, Integer> {
 
 	Subrace findById(Integer id);
+
+	List<Subrace> findByRaceId(Integer raceId);
 }

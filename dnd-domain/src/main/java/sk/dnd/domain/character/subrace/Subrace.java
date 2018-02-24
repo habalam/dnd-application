@@ -19,6 +19,7 @@ public class Subrace extends BaseObject<Integer> {
 
 	private List<AbilityModifier> subraceAbilityModifiers;
 	private List<Feature> subraceFeatures;
+	private SubracePhysiognomy racePhysiognomy;
 	private Map<String, SubraceLocale> locales;
 
 	private Race race;
@@ -90,6 +91,16 @@ public class Subrace extends BaseObject<Integer> {
 
 	public void setRace(Race race) {
 		this.race = race;
+	}
+
+	@NotNull
+	@OneToOne(mappedBy = "subrace", optional = false)
+	public SubracePhysiognomy getRacePhysiognomy() {
+		return racePhysiognomy;
+	}
+
+	public void setRacePhysiognomy(SubracePhysiognomy racePhysiognomy) {
+		this.racePhysiognomy = racePhysiognomy;
 	}
 
 	@Transient

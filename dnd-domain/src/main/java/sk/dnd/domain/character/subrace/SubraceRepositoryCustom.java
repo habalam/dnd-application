@@ -9,4 +9,6 @@ public interface SubraceRepositoryCustom {
 	List<Subrace> listAll();
 
 	List<Subrace> listAllWithCurrentLocale(String currentLangCode);
+
+	List<Subrace> listSubracesForRaceWithCurrentLocale(Integer raceId, String currentLangCode);
 }

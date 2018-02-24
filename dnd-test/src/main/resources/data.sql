@@ -297,42 +297,6 @@ insert into DND_ABILITY_MODIFIER (dnd_ability_modifier_id, ability_type, value) 
 insert into DND_ABILITY_MODIFIER (dnd_ability_modifier_id, ability_type, value) values (2, 'WISDOM', 1);
 insert into DND_ABILITY_MODIFIER (dnd_ability_modifier_id, ability_type, value) values (3, 'STRENGTH', 2);
 
--- Abilities
-insert into DND_FEATURE (dnd_feature_id) values (1);
-insert into DND_FEATURE (dnd_feature_id) values (2);
-insert into DND_FEATURE (dnd_feature_id) values (3);
-insert into DND_FEATURE (dnd_feature_id) values (4);
-insert into DND_FEATURE (dnd_feature_id) values (5);
-insert into DND_FEATURE (dnd_feature_id) values (6);
-
-insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (1, 'en', 'Dwarven Resilience',
-'You have advantage on saving throws against poison, and you have resistance against poison damage.');
-insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (2, 'en', 'Dwarven Combat Training',
-'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.');
-insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (3, 'en', 'Tool Proficiency',
-'You gain proficiency with the artisan’s tools of your choice: smith’s tools, brewer’s supplies, or mason’s tools.');
-insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (4, 'en', 'Stonecunning',
-'Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus.');
-insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (5, 'en', 'Dwarven Toughness',
-'Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.');
-insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (6, 'en', 'Dwarven Armor Training',
-'You have proficiency with light and medium armor.');
-
-insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
-(1, 1, 'ADVANTAGE_SAVING_THROW', 0, null);
-insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
-(2, 1, 'RESISTANCE', 0, null);
-insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
-(3, 2, 'PROFICIENCY_WEAPON', 0, null);
-insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
-(4, 3, 'PROFICIENCY_TOOL', 1, null);
-insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
-(5, 4, 'PROFICIENCY_DOUBLED', 0, null);
-insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
-(6, 5, 'HIT_POINTS_PER_LEVEL', 0, 1);
-insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
-(7, 6, 'PROFICIENCY_ARMOR', 0, null);
-
 insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (1, 36);
 insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (2, 37);
 insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (3, 38);
@@ -346,7 +310,8 @@ insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classi
 insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (7, 45);
 insert into DND_FEATURE_EFFECT_CLASSIFICATION (dnd_feature_effect_id, dnd_classification_id) values (7, 46);
 
--- Races
+-- RACES
+-- Dwarf
 insert into DND_RACE (dnd_race_id, size, speed, darkvision) values (1, 'MEDIUM', 25, 'Y');
 
 insert into DND_RACE_L (dnd_race_id, lang_code, name, age, alignment, size, description) values (1, 'en', 'Dwarf', 'Dwarves mature at the same rate as humans, but they’re considered young until they reach the age of 50. On average, they live about 350 years.',
@@ -361,6 +326,20 @@ insert into DND_RACE_L (dnd_race_id, lang_code, name, age, alignment, size, desc
 
 insert into DND_RACE_ABILITY_MODIFIER (dnd_race_id, dnd_ability_modifier_id) values (1, 1);
 insert into DND_RACE_LANGUAGE (dnd_race_id, dnd_classification_id) values (1, 20);
+
+insert into DND_FEATURE (dnd_feature_id) values (1);
+insert into DND_FEATURE (dnd_feature_id) values (2);
+insert into DND_FEATURE (dnd_feature_id) values (3);
+insert into DND_FEATURE (dnd_feature_id) values (4);
+
+insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (1, 'en', 'Dwarven Resilience',
+'You have advantage on saving throws against poison, and you have resistance against poison damage.');
+insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (2, 'en', 'Dwarven Combat Training',
+'You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.');
+insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (3, 'en', 'Tool Proficiency',
+'You gain proficiency with the artisan’s tools of your choice: smith’s tools, brewer’s supplies, or mason’s tools.');
+insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (4, 'en', 'Stonecunning',
+'Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus.');
 
 insert into DND_RACE_FEATURE (dnd_race_id, dnd_feature_id) values (1, 1);
 insert into DND_RACE_FEATURE (dnd_race_id, dnd_feature_id) values (1, 2);
@@ -380,11 +359,40 @@ insert into DND_SUBRACE_L (dnd_subrace_id, lang_code, name, description) values 
 insert into DND_SUBRACE_L (dnd_subrace_id, lang_code, name, description) values (2, 'sk', 'Kopcový trpaslík',
 'Ako kopcový trpaslík máte ostré zmysly, rozvinuté podvedomie a pozoruhodnú húževnatosť. Zlatí trpaslíci z Faerunu vo svojom mocnom južnom kráľovstve sú kopcoví trpaslíci, ako aj vyhostení Neidari a odvrhnutí Klari z Krynnu v prostredí Dračej Kopije.');
 
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(1, 1, 'ADVANTAGE_SAVING_THROW', 0, null);
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(2, 1, 'RESISTANCE', 0, null);
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(3, 2, 'PROFICIENCY_WEAPON', 0, null);
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(4, 3, 'PROFICIENCY_TOOL', 1, null);
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(5, 4, 'PROFICIENCY_DOUBLED', 0, null);
+
 insert into DND_SUBRACE_ABILITY_MODIFIER (dnd_subrace_id, dnd_ability_modifier_id) values (1, 2);
 insert into DND_SUBRACE_ABILITY_MODIFIER (dnd_subrace_id, dnd_ability_modifier_id) values (2, 3);
 
+insert into DND_FEATURE (dnd_feature_id) values (5);
+insert into DND_FEATURE (dnd_feature_id) values (6);
+
+insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (5, 'en', 'Dwarven Toughness',
+'Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.');
+insert into DND_FEATURE_L (dnd_feature_id, lang_code, name, description) values (6, 'en', 'Dwarven Armor Training',
+'You have proficiency with light and medium armor.');
+
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(6, 5, 'HIT_POINTS_PER_LEVEL', 0, 1);
+insert into DND_FEATURE_EFFECT (dnd_feature_effect_id, dnd_feature_id, feature_effect_type, values_to_select, value) values
+(7, 6, 'PROFICIENCY_ARMOR', 0, null);
+
 insert into DND_SUBRACE_FEATURE (dnd_subrace_id, dnd_feature_id) values (1, 5);
 insert into DND_SUBRACE_FEATURE (dnd_subrace_id, dnd_feature_id) values (2, 6);
+
+insert into DND_SUBRACE_PHYSIOGNOMY (dnd_subrace_id, base_height, base_weight, height_modifier, height_modifier_multiplier,
+weight_modifier, weight_modifier_multiplier) values (1, 44, 115, 4, 2, 6, 2);
+insert into DND_SUBRACE_PHYSIOGNOMY (dnd_subrace_id, base_height, base_weight, height_modifier, height_modifier_multiplier,
+weight_modifier, weight_modifier_multiplier) values (2, 48, 130, 4, 2, 6, 2);
 
 -- Sequencers
 insert into sys_sequence (seq_name, seq_count) values ('DND_CLASSIFICATION_ID', 1000000);

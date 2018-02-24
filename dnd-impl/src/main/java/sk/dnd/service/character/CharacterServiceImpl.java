@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sk.dnd.domain.character.*;
@@ -12,11 +14,22 @@ import sk.dnd.domain.character.background.Background;
 import sk.dnd.domain.character.background.BackgroundRepositoryCustom;
 import sk.dnd.domain.character.race.AbilityModifier;
 import sk.dnd.domain.character.race.AbilityModifierRepository;
+import sk.dnd.domain.character.race.FeatureEffect;
+import sk.dnd.domain.character.race.FeatureLocale;
 import sk.dnd.domain.character.race.Race;
 import sk.dnd.domain.character.race.RaceRepositoryCustom;
 import sk.dnd.domain.character.subrace.Subrace;
+import sk.dnd.domain.character.subrace.SubraceLocale;
+import sk.dnd.domain.character.subrace.SubracePhysiognomy;
+import sk.dnd.domain.character.subrace.SubracePhysiognomyRepository;
 import sk.dnd.domain.character.subrace.SubraceRepositoryCustom;
 import sk.dnd.domain.character.support.ClassificationType;
+import sk.dnd.service.character.jsonmapping.ClassificationLocaleJsonMapping;
+import sk.dnd.service.character.jsonmapping.FeatureEffectJsonMapping;
+import sk.dnd.service.character.jsonmapping.FeatureLocaleJsonMapping;
+import sk.dnd.service.character.jsonmapping.SubraceJsonMapping;
+import sk.dnd.service.character.jsonmapping.SubraceLocaleJsonMapping;
+import sk.dnd.service.character.jsonmapping.SubracePshysiognomyJsonMapping;
 
 @Component
 public class CharacterServiceImpl implements CharacterService {
@@ -38,6 +51,9 @@ public class CharacterServiceImpl implements CharacterService {
 
 	@Autowired
 	private ClassificationRepository classificationRepository;
+
+	@Autowired
+	private SubracePhysiognomyRepository subracePhysiognomyRepository;
 
 	@Override
 	public Character findCharacter(String characterName) {
@@ -101,6 +117,54 @@ public class CharacterServiceImpl implements CharacterService {
 	@Override
 	public Character findCharacterById(Integer characterId) {
 		return characterRepository.findById(characterId);
+	}
+
+	@Override
+	public List<String> listSubraceJsonsByRaceWithCurrentLocale(Integer raceId, String currentLangCode) {
+		List<Subrace> subraces = subraceRepositoryCustom.listSubracesForRaceWithCurrentLocale(raceId, currentLangCode);
+		ObjectMapper objectMapper = createSubraceJsonMapper();
+		List<String> subraceJsons = new ArrayList<>();
+		for(Subrace subrace: subraces) {
+			try {
+				String subraceJson = objectMapper.writeValueAsString(subrace);
+				subraceJsons.add(subraceJson);
+			}
+			catch (JsonProcessingException e) {
+				//TODO spravit nejakú normálnu custom exception
+				e.printStackTrace();
+			}
+		}
+		return subraceJsons;
+	}
+
+	@Override
+	public String getSubracePhysiognomyJson(Integer subraceId) {
+		SubracePhysiognomy subracePhysiognomy = subracePhysiognomyRepository.findById(subraceId);
+		ObjectMapper objectMapper = createSubracePhysiognomyJsonMapper();
+		try {
+			return objectMapper.writeValueAsString(subracePhysiognomy);
+		}
+		catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private ObjectMapper createSubracePhysiognomyJsonMapper() {
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.addMixIn(SubracePhysiognomy.class, SubracePshysiognomyJsonMapping.class);
+		return objectMapper;
+	}
+
+	private ObjectMapper createSubraceJsonMapper() {
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.addMixIn(SubraceLocale.class, SubraceLocaleJsonMapping.class);
+		objectMapper.addMixIn(FeatureLocale.class, FeatureLocaleJsonMapping.class);
+		objectMapper.addMixIn(FeatureEffect.class, FeatureEffectJsonMapping.class);
+		objectMapper.addMixIn(ClassificationLocale.class, ClassificationLocaleJsonMapping.class);
+		objectMapper.addMixIn(SubracePhysiognomy.class, SubracePshysiognomyJsonMapping.class);
+		objectMapper.addMixIn(Subrace.class, SubraceJsonMapping.class);
+		return objectMapper;
 	}
 
 	private CharacterDimension createCharacterDimension(Character character) {

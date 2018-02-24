@@ -35,4 +35,14 @@ public class SubraceRepositoryCustomImpl implements SubraceRepositoryCustom {
 		}
 		return subraces;
 	}
+
+	@Override
+	public List<Subrace> listSubracesForRaceWithCurrentLocale(Integer raceId, String currentLangCode) {
+		List<Subrace> subraces = new ArrayList<>();
+		for(Subrace subrace: subraceRepository.findByRaceId(raceId)) {
+			subrace.setCurrentLocale(currentLangCode);
+			subraces.add(subrace);
+		}
+		return subraces;
+	}
 }

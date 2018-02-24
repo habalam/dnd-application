@@ -4,7 +4,8 @@
 <link rel="stylesheet" th:href="@{/css/default.css}"/>
 
 <script th:src="@{/scripts/jquery-3.2.1.js}"></script>
-<script th:src="@{/scripts/characterRace.js}"></script>
+
+<th:block layout:fragment="scripts"></th:block>
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -12,9 +13,7 @@
 <body>
 <div class="main_window">
 	<div th:replace="fragments/header :: header"></div>
-	<div layout:fragment="content" class="content">
-		<div class="test_native">test_native</div>
-	</div>
+	<div layout:fragment="content" class="content"></div>
 	<div th:replace="fragments/footer :: footer"></div>
 </div>
 </body>

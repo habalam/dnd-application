@@ -20,4 +20,8 @@ public interface CharacterService {
 	List<Background> listBackgrounds(String currentLangCode);
 
 	Character findCharacterById(Integer characterId);
+
+	List<String> listSubraceJsonsByRaceWithCurrentLocale(Integer raceId, String currentLangCode);
+
+	String getSubracePhysiognomyJson(Integer subraceId);
 }
