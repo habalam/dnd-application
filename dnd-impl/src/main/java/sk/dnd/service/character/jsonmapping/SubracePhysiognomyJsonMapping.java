@@ -5,11 +5,11 @@ import sk.dnd.domain.character.subrace.Subrace;
 import sk.dnd.domain.character.subrace.SubraceLocale;
 
 /**
- * SubracePshysiognomyJsonMapping.
+ * SubracePhysiognomyJsonMapping.
  *
  * @author habala
  */
-public interface SubracePshysiognomyJsonMapping {
+public interface SubracePhysiognomyJsonMapping {
 
 	@JsonBackReference
 	Subrace getSubrace();

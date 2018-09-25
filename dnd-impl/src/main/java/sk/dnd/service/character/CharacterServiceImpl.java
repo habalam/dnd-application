@@ -8,8 +8,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import sk.dnd.domain.character.*;
 import sk.dnd.domain.character.Character;
+import sk.dnd.domain.character.CharacterBackground;
+import sk.dnd.domain.character.CharacterDimension;
+import sk.dnd.domain.character.CharacterRace;
+import sk.dnd.domain.character.CharacterRepository;
+import sk.dnd.domain.character.CharacterSubrace;
+import sk.dnd.domain.character.Classification;
+import sk.dnd.domain.character.ClassificationLocale;
+import sk.dnd.domain.character.ClassificationRepository;
 import sk.dnd.domain.character.background.Background;
 import sk.dnd.domain.character.background.BackgroundRepositoryCustom;
 import sk.dnd.domain.character.race.AbilityModifier;
@@ -17,6 +24,7 @@ import sk.dnd.domain.character.race.AbilityModifierRepository;
 import sk.dnd.domain.character.race.FeatureEffect;
 import sk.dnd.domain.character.race.FeatureLocale;
 import sk.dnd.domain.character.race.Race;
+import sk.dnd.domain.character.race.RaceLocale;
 import sk.dnd.domain.character.race.RaceRepositoryCustom;
 import sk.dnd.domain.character.subrace.Subrace;
 import sk.dnd.domain.character.subrace.SubraceLocale;
@@ -27,9 +35,11 @@ import sk.dnd.domain.character.support.ClassificationType;
 import sk.dnd.service.character.jsonmapping.ClassificationLocaleJsonMapping;
 import sk.dnd.service.character.jsonmapping.FeatureEffectJsonMapping;
 import sk.dnd.service.character.jsonmapping.FeatureLocaleJsonMapping;
+import sk.dnd.service.character.jsonmapping.RaceJsonMapping;
+import sk.dnd.service.character.jsonmapping.RaceLocaleJsonMapping;
 import sk.dnd.service.character.jsonmapping.SubraceJsonMapping;
 import sk.dnd.service.character.jsonmapping.SubraceLocaleJsonMapping;
-import sk.dnd.service.character.jsonmapping.SubracePshysiognomyJsonMapping;
+import sk.dnd.service.character.jsonmapping.SubracePhysiognomyJsonMapping;
 
 @Component
 public class CharacterServiceImpl implements CharacterService {
@@ -120,21 +130,41 @@ public class CharacterServiceImpl implements CharacterService {
 	}
 
 	@Override
-	public List<String> listSubraceJsonsByRaceWithCurrentLocale(Integer raceId, String currentLangCode) {
+	public String racesListJsonsWithCurrentLocale(String currentLangCode) {
+		List<Race> races = raceRepositoryCustom.listAllWithCurrentLocale(currentLangCode);
+		ObjectMapper raceMapper = createRaceJsonMapper();
+		try {
+			return raceMapper.writeValueAsString(races);
+		}
+		catch (JsonProcessingException e) {
+			//TODO spravit nejaku normalnu custom exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	 private ObjectMapper createRaceJsonMapper() {
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.addMixIn(FeatureLocale.class, FeatureLocaleJsonMapping.class);
+		objectMapper.addMixIn(FeatureEffect.class, FeatureEffectJsonMapping.class);
+		objectMapper.addMixIn(ClassificationLocale.class, ClassificationLocaleJsonMapping.class);
+		objectMapper.addMixIn(RaceLocale.class, RaceLocaleJsonMapping.class);
+		objectMapper.addMixIn(Race.class, RaceJsonMapping.class);
+		return objectMapper;
+	}
+
+	@Override
+	public String listSubracesListJsonByRaceWithCurrentLocale(Integer raceId, String currentLangCode) {
 		List<Subrace> subraces = subraceRepositoryCustom.listSubracesForRaceWithCurrentLocale(raceId, currentLangCode);
 		ObjectMapper objectMapper = createSubraceJsonMapper();
-		List<String> subraceJsons = new ArrayList<>();
-		for(Subrace subrace: subraces) {
-			try {
-				String subraceJson = objectMapper.writeValueAsString(subrace);
-				subraceJsons.add(subraceJson);
-			}
-			catch (JsonProcessingException e) {
-				//TODO spravit nejakú normálnu custom exception
-				e.printStackTrace();
-			}
+		try {
+			return objectMapper.writeValueAsString(subraces);
 		}
-		return subraceJsons;
+		catch (JsonProcessingException e) {
+			//TODO spravit nejakú normálnu custom exception
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
@@ -152,7 +182,7 @@ public class CharacterServiceImpl implements CharacterService {
 
 	private ObjectMapper createSubracePhysiognomyJsonMapper() {
 		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.addMixIn(SubracePhysiognomy.class, SubracePshysiognomyJsonMapping.class);
+		objectMapper.addMixIn(SubracePhysiognomy.class, SubracePhysiognomyJsonMapping.class);
 		return objectMapper;
 	}
 
@@ -162,7 +192,7 @@ public class CharacterServiceImpl implements CharacterService {
 		objectMapper.addMixIn(FeatureLocale.class, FeatureLocaleJsonMapping.class);
 		objectMapper.addMixIn(FeatureEffect.class, FeatureEffectJsonMapping.class);
 		objectMapper.addMixIn(ClassificationLocale.class, ClassificationLocaleJsonMapping.class);
-		objectMapper.addMixIn(SubracePhysiognomy.class, SubracePshysiognomyJsonMapping.class);
+		objectMapper.addMixIn(SubracePhysiognomy.class, SubracePhysiognomyJsonMapping.class);
 		objectMapper.addMixIn(Subrace.class, SubraceJsonMapping.class);
 		return objectMapper;
 	}

@@ -1,0 +1,49 @@
+.header_title_bar {
+  height: 80px;
+}
+
+#header_icon {
+  float: left;
+  padding-top: 3px;
+  width: 420px;
+}
+
+#header_text {
+  float: left;
+  padding-top: 3px;
+  width: 445px;
+}
+
+#header_main_text {
+  font-size: 40px;
+  text-shadow: 1px 1px #163d55;
+  font-family: "Times New Roman", serif;
+  height: 50px;
+  margin-top: -7px;
+}
+
+#header_description_text {
+  font-size: 17px;
+  font-family: "Times New Roman", serif;
+}
+
+.navigation_bar {
+  height: 50px;
+  background-color: #d72d2e;
+  margin-top: 8px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+div.nav_bar_item {
+  margin-top: 16px;
+  float: left;
+  border-right: 1px solid rgb(31, 108, 154);
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+div.nav_bar_item.home_icon {
+  height: 20.8px;
+}

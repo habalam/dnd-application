@@ -5,7 +5,7 @@ $(document).ready(function() {
 		function() {
 			setSubraces();
 		}
-	)
+	);
 	$('#subrace').change(
 		function() {
 			setSubracePhysiognomy();

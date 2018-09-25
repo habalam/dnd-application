@@ -21,7 +21,9 @@ public interface CharacterService {
 
 	Character findCharacterById(Integer characterId);
 
-	List<String> listSubraceJsonsByRaceWithCurrentLocale(Integer raceId, String currentLangCode);
+	String listSubracesListJsonByRaceWithCurrentLocale(Integer raceId, String currentLangCode);
 
 	String getSubracePhysiognomyJson(Integer subraceId);
+
+	String racesListJsonsWithCurrentLocale(String currentLangCode);
 }

@@ -51,7 +51,7 @@ public class Character extends BaseObject<Integer> {
 	private boolean inspired = false;
 	private String origin;
 
-	//TODO add skills/tools
+	//TODO add skills/tools - from class
 	//TODO add equiped equipment + whole items
 	//TODO add death saves
 	//TODO add feats

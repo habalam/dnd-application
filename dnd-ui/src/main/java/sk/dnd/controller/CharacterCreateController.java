@@ -53,17 +53,10 @@ public class CharacterCreateController {
 		model.addAttribute("backgrounds", characterService.listBackgrounds(currentLangCode));
 	}
 
-	//TODO URL pre ajaxove volania oddelit niekam mimo
-	//TODO prerobiť na nejakú variantu "cache" resp. iné využitie trvalo inicializovaných objektov upratovanych cez Observer/Observable
-	@RequestMapping("/subraces")
-	@ResponseBody
-	public List<String> getSubraces(@RequestParam("raceId") Integer raceId) {
-		return characterService.listSubraceJsonsByRaceWithCurrentLocale(raceId, LangUtils.getCurrentLangCode());
-	}
 
 	@RequestMapping("/subrace/physiognomy")
 	@ResponseBody
-	public String getSubracePhysiognomi(@RequestParam("subraceId") Integer subraceId) {
+	public String getSubracePhysiognomy(@RequestParam("subraceId") Integer subraceId) {
 		return characterService.getSubracePhysiognomyJson(subraceId);
 	}
 

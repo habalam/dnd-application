@@ -1,0 +1,145 @@
+<div class="content">
+  <div class="options_bar">
+    <div class="option" id="create_base_info">
+      <a class="options_bar option" href="/">Základné údaje</a>
+    </div>
+    <div class="option" id="create_background">
+      <a class="options_bar option" href="/">Pozadie</a>
+    </div>
+    <div class="option" id="create_race">
+      <a class="options_bar option" href="/">Rasa</a>
+    </div>
+    <div class="option" id="create_attributes">
+      <a class="options_bar option" href="/">Vlastnosti</a>
+    </div>
+    <div class="option" id="create_professions">
+      <a class="options_bar option" href="/">Povolanie</a>
+    </div>
+    <div class="option" id="create_origin">
+      <a class="options_bar option" href="/">Pôvod</a>
+    </div>
+  </div>
+  <form [formGroup]="newCharacterForm" id="new-character-base-info" novalidate>
+    <div class="content_panel">
+      <div id="creation_base_info">
+        <div>
+          <label>Meno:</label>
+          <input placeholder="Add character name..." class="form-control" formControlName="name"/>
+        </div>
+        <div>
+          <label>Pohlavie:</label>
+          <select formControlName="gender">
+            <option *ngFor="let gender of genders" [ngValue]="gender.value">{{gender.text}}</option>
+          </select>
+        </div>
+        <div>
+          <label>Rasa:</label>
+          <select formControlName="race">
+            <option *ngFor="let race of races" [ngValue]="race?.id" [selected]="race?.id == 1">{{race?.currentLocale.name}}</option>
+          </select>
+        </div>
+        <div>
+          <label>Podrasa:</label>
+          <select formControlName="subrace">
+            <option *ngFor="let subrace of subraces" [ngValue]="subrace?.id" [selected]="subrace?.id == 1">{{subrace?.currentLocale.name}}</option>
+          </select>
+        </div>
+        <!--<div>
+          <label text="#{gui.createcharacter.label.height.feets}"></label>
+          <select field="*{feets}">
+            <option each="feet: ${feets}" value="${feet}"></option>
+          </select>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.height.inches}"></label>
+          <select field="*{inches}">
+            <option each="inch: ${inches}" value="${inch}"></option>
+          </select>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.weight}"></label>
+          <select field="*{weight}">
+            <option each="weight: ${weight}" value="${weight}"></option>
+          </select>
+        </div>-->
+      </div>
+      <div id="detail_info_panel">
+        <div>{{currentRace?.currentLocale.name}}</div>
+        <br/>
+        <div>{{currentRace?.currentLocale.alignment}}</div>
+        <br/>
+        <div>{{currentRace?.currentLocale.size}}</div>
+        <br/>
+        <div>{{currentRace?.currentLocale.age}}</div>
+        <br/>
+        <div>{{currentRace?.currentLocale.description}}</div>
+      </div>
+      <!--<div>
+        <div>
+          <label text="#{gui.createcharacter.label.allignment}"></label>
+          <select field="*{allignment}">
+            <option each="allignment: ${allignments}" value="${allignment}" text="${T(sk.dnd.util.DndWebFunctions).enumContextLocalization(allignment)}"></option>
+          </select>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.background}"></label>
+          <select field="*{background}">
+            <option each="background: ${backgrounds}" value="${background.id}" text="${background.currentLocale.name}"></option>
+          </select>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.level}"></label>
+          <input type="number" field="*{level}"/>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.hitpoints}"></label>
+          <input type="number" field="*{hitPoints}"/>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.temporaryhitpoints}"></label>
+          <input type="number" field="*{temporaryHitPoints}"/>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.wounds}"></label>
+          <input type="number" field="*{wounds}"/>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.strength}"></label>
+          <input type="number" field="*{strength}"/>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.dexterity}"></label>
+          <input type="number" field="*{dexterity}"/>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.constitution}"></label>
+          <input type="number" field="*{constitution}"/>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.wisdom}"></label>
+          <input type="number" field="*{wisdom}"/>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.intelligence}"></label>
+          <input type="number" field="*{intelligence}"/>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.charisma}"></label>
+          <input type="number" field="*{charisma}"/>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.inspiration}"></label>
+          <input type="checkbox" field="*{inspired}"/>
+        </div>
+        <div>
+          <label text="#{gui.createcharacter.label.origin}"></label>
+          <input type="text" field="*{origin}"/>
+        </div>
+      </div>-->
+    </div>
+    <!--<div>
+      <input value="#{gui.global.button.save}" type="submit"/>
+      <a href="@{/reset}" text="#{gui.global.button.reset}"></a>
+    </div>-->
+  </form>
+</div>
